@@ -13,9 +13,9 @@
 .column {
   flex: 33.33%;
   padding: 5px;
-  border:3px solid rgb(5, 213, 213);
+  border:8px solid #05d5d5;
   margin-right: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
 } 
 .img1{
     margin-left: 60px;
@@ -45,7 +45,7 @@ cursor: pointer;
 background: grey;
 }
 button[id="logintype_warden"]{
-  margin-top: 130px;
+  margin-top: 63px;
 }
     </style>
 </head>
@@ -55,11 +55,11 @@ button[id="logintype_warden"]{
         <div class="column">
           <form action="/" method="post" id="form1">
           <div class="img1"><img src="static\warden_logo.png" alt="warden_logo" style="width:75%"></div>
-          <button id="logintype_warden">Warden login</button>
+          <button id="logintype_warden"><a href="{{url_for('wardenlogin')}}">Warden login</a></button>
         </div>
         <div class="column">
           <div class="img2"><img src="static\hostelite.jpg" alt="hostelite_logo" style="width:75%"></div>
-          <button id = "logintype">Hostelite login</button>
+          <button id = "logintype"><a href="{{url_for('redtologin')}}">Hostelite login</a></button>
         </form>
         </div>
       </div>
