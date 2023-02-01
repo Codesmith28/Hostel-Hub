@@ -6,8 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
         <link rel = "stylesheet" href="static\login.css">
-    </head>
+        {% block head %} {% endblock %}
+    </head>     
     <body>
+        {% block content %}
         <div class = "centre">
             <h1>HostelHub
                 Login
@@ -28,23 +30,12 @@
                     <span></span>
                     <label>Password</label>
                 </div>
-                
+                {% endblock %}
                 <div class="pass">
                     Forgot Password ?
                 </div>
-
-                <input type="submit" value="Login">
-
-                <div class="signup_link">
-                    Newcomer? then:
-                    <a href = "#">
-                        Sign-up
-                    </a>
-                </div>
-
+                <input type="submit" value="Login"> <br>
             </form>
-
         </div>
-
     </body>
 </html>

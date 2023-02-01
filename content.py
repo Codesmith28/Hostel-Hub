@@ -6,12 +6,14 @@ app = Flask(__name__)
 
 def index():
     return render_template('profiles.html')
-@app.route('/',methods=['GET','POST'])
+
+@app.route('/login')
 def redtologin():
-    if(request.method == 'POST'):
-        try:
-            return render_template("login.html")
-        except:
-            return 'login page wasn\'t found'
+        return render_template("login.html")
+
+@app.route('/wardenlogin')
+def wardenlogin():
+    return render_template('warden_login.html')
+
 if(__name__ == '__main__'):
     app.run(debug=True)

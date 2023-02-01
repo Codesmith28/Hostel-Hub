@@ -81,7 +81,7 @@ form .txt_field {
 }
 
 .pass {
-  margin: -5px 0 20px 5px;
+  margin: -5px 0 25px 5px;
   color: gray;
   cursor: pointer;
 }
@@ -124,4 +124,11 @@ input[type="submit"]:hover {
 
 .signup_link a:hover {
   text-decoration: underline;
+}
+
+select[id="hostel_name"]{
+  background: aqua;
+  height: 20px;
+  width:100%;
+  text-align: center;
 }
