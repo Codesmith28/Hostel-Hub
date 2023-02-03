@@ -5,7 +5,7 @@ from . import db
 auth = Blueprint('auth',__name__)
 
 
-@auth.route('/login',methods=['GET','POSTS'])
+@auth.route('/login',methods=['GET','POST'])
 def login():
     if request.method == 'POST':
         username = request.form.get('username')
@@ -15,12 +15,15 @@ def login():
         user = User.query.filter_by(username=username).first()
         if user:
             if check_password_hash(user.password,password):
-                flash('Logged in successfully!',category='success')
+                return render_template('dashboard.html')
             else:
                 flash('Incorrect password!',category='error')
+                return render_template('warden_login.html')
         else:
             flash('Username doesn\'t exist',category='error')
-    return render_template({{url_for('login')}})
+            return render_template('warden_login.html')
+
+    return render_template(url_for('wardenlogin'))
 
 @auth.route('/logout')
 def logout():
@@ -36,9 +39,8 @@ def signup():
         user = User.query.filter_by(username=username).first()
 
         if user:
-            redirect (url_for('views.home'))
             flash('Username already exists',category='error')
-
+            return render_template('warden_register.html')
         if len(username) < 1:
             flash("Please enter a valid username.",category='error')
         elif len(password) < 7:

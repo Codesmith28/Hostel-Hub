@@ -18,3 +18,8 @@ def wardenlogin():
 @views.route('/wardenRegister')
 def wardenRegister():
     return render_template('warden_register.html')
+
+@views.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+    

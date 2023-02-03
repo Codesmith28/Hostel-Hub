@@ -1,11 +1,6 @@
 {% extends 'login.html' %}
 
 {% block title %} <title>Warden Register</title> {% endblock %}
-<style>
-  .centre{
-        height:510px;
-    }
-</style>
 {% block content %}
 {%block form %}<form method="post" action="{{url_for('auth.signup')}}"> {% endblock %}
   <div class="txt_field">

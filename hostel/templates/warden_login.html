@@ -1,16 +1,7 @@
 {% extends 'login.html' %}
 
-{% block head %} 
+
 {% block title %}<title>Warden Login</title>{% endblock %}
-<style>
-    option[id="hostel_name"]{
-        background: cyan;
-    }
-    .centre{
-        height:510px;
-    }
-</style>
-{% endblock %}
 {%block content %}
 {%block form %}<form method="post" action="{{url_for('auth.login')}}"> {% endblock %}
 <div class="txt_field">
