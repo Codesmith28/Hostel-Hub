@@ -15,11 +15,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 400px;
-<<<<<<< HEAD:hostel/static/login.css
   height:360px;
-=======
-  /* height: relative ; 510 px on warden and 360px on hostelite */
->>>>>>> a8260e3bc286382b5dd982808731147652d10773:static/login.css
   background: blanchedalmond;
   border-radius: 30px;
   color: teal;
