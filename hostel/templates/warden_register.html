@@ -1,0 +1,19 @@
+{% extends 'login.html' %}
+
+{% block title %} <title>Warden Register</title> {% endblock %}
+<style>
+  .centre{
+        height:510px;
+    }
+</style>
+{% block content %}
+{%block form %}<form method="post" action="{{url_for('auth.signup')}}"> {% endblock %}
+  <div class="txt_field">
+    <input type="text" name="hostel" id="hostel" required>
+    <span></span>
+    <label for="hostel">Enter your hostel name</label>
+  </div>
+    <input type="submit" value="Register" name="submitform">
+    Already have an account?
+    <a href="{{url_for('views.wardenlogin')}}"><small>Sign in</small></a>
+{% endblock %}
