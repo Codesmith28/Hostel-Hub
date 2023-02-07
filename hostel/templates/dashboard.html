@@ -1,12 +1,146 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-</head>
-<body>
-    Dashboard
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Attendance Dashboard | By Code Info</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <!-- Font Awesome Cdn Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <ul>
+          <li>
+            <a href="#" class="logo">
+              <img src="./pic/logo.jpg" />
+              <span class="nav-item">Admin</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-menorah"></i>
+              <span class="nav-item">Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-comment"></i>
+              <span class="nav-item">Message</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-database"></i>
+              <span class="nav-item">Rent</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fas fa-cog"></i>
+              <span class="nav-item">Setting</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span class="nav-item">Log out</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <section class="main">
+        <div class="main-top">
+          <h1>Dashboard</h1>
+          <i class="fas fa-user-cog"></i>
+        </div>
+        <div class="users">
+          <div class="card">
+            <div class="col">
+              <img src="./pic/img1.jpg" />
+              <h4>Sam David</h4>
+            </div>
+
+            <div class="col">
+              Residence:
+              <!-- Residence:  -->
+              <br />
+              Institution:
+              <!-- University -->
+              <br />
+              Stream:
+              <!-- Stream -->
+            </div>
+
+            <div class="per"></div>
+            <button>Profile</button>
+          </div>
+        </div>
+
+        <section class="attendance">
+          <div class="attendance-list">
+            <h1>Mess</h1>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Sr.No.</th>
+                  <th>Food</th>
+                  <th>Type</th>
+                  <th>Date</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>01</td>
+                  <td>Sam David</td>
+                  <td>Breakfast</td>
+                  <td>03-24-22</td>
+                  <td>7:00</td>
+                  <td>9:30</td>
+                  <td><button>View</button></td>
+                </tr>
+                <tr>
+                  <td>02</td>
+                  <td>Balbina Kherr</td>
+                  <td>Lunch</td>
+                  <td>03-24-22</td>
+                  <td>11:00</td>
+                  <td>14:00</td>
+                  <td><button>View</button></td>
+                </tr>
+                <tr>
+                  <td>03</td>
+                  <td>Badan John</td>
+                  <td>Evening Snacks</td>
+                  <td>03-24-22</td>
+                  <td>16:00</td>
+                  <td>16:30</td>
+                  <td><button>View</button></td>
+                </tr>
+                <tr>
+                  <td>04</td>
+                  <td>Sara David</td>
+                  <td>Dinner</td>
+                  <td>03-24-22</td>
+                  <td>19:30</td>
+                  <td>22:00</td>
+                  <td><button>View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </div>
+  </body>
 </html>
