@@ -40,7 +40,7 @@ def hostellite_login():
         hostel_exists_h = hostellite.query.filter_by(hostel=hostel_h).first()
         if hostel_exists_h:
             if user_h:                  
-                return render_template('dashboard.html',username=username_h,hostel=hostel_h)
+                return render_template('dashboard_hostellite.html',username=username_h,hostel=hostel_h)
             else:
                 flash("Username does\'nt exists please contact your hostel authoraties to create your account",category='error')
                 return render_template('login.html')
