@@ -1,7 +1,10 @@
 from flask import Blueprint,render_template,request,flash,redirect,url_for
-from .models import User
+from .models import User,hostellite
 from werkzeug.security import generate_password_hash,check_password_hash
 from . import db
+from flask_login import login_user , login_required , logout_user , current_user
+from . import hostellite_db
+
 auth = Blueprint('auth',__name__)
 
 
@@ -13,17 +16,38 @@ def login():
         hostel = request.form.get('hostel')
 
         user = User.query.filter_by(username=username).first()
+        hostel_exists = User.query.filter_by(hostel=hostel).first()
         if user:
-            if check_password_hash(user.password,password):
-                return render_template('dashboard.html')
-            else:
-                flash('Incorrect password!',category='error')
-                return render_template('warden_login.html')
+            if hostel_exists:
+                if check_password_hash(user.password,password):
+                    return render_template('dashboard.html',username=username,hostel=hostel)
+                else:
+                    flash('Incorrect Password Entered',category='error')
+                    return render_template('warden_login.html')
         else:
-            flash('Username doesn\'t exist',category='error')
+            flash("Username doesn\'t exists. Please signup to get your hostel access to our site",category='error')    
             return render_template('warden_login.html')
 
-    return render_template(url_for('wardenlogin'))
+    return render_template('warden_login.html')
+
+@auth.route('/hostellite_login',methods=['GET','POST'])
+def hostellite_login():
+    if request.method == 'POST':
+        username_h = request.form.get('username')
+        hostel_h = request.form.get('hostel')
+
+        user_h = hostellite.query.filter_by(username=username_h).first()
+        hostel_exists_h = hostellite.query.filter_by(hostel=hostel_h).first()
+        if hostel_exists_h:
+            if user_h:                  
+                return render_template('dashboard.html',username=username_h,hostel=hostel_h)
+            else:
+                flash("Username does\'nt exists please contact your hostel authoraties to create your account",category='error')
+                return render_template('login.html')
+        else:
+            flash("Your hostel name doesnt exists on our database",category='error')
+            return render_template('login.html')
+    return render_template('login.html')
 
 @auth.route('/logout')
 def logout():
@@ -50,7 +74,28 @@ def signup():
             db.session.add(new_user)
             db.session.commit()
             redirect(url_for('views.home'))
-            flash('Account created',category='error')
+            flash('Account created. Now please redirect to login page to access your account ',category='error')
 
     return render_template("warden_register.html")
 
+@auth.route('/add_info',methods=['GET','POST'])
+def add_info():
+    if request.method == 'POST':
+        new_name = request.form.get('new_name')
+        new_floor = request.form.get('new_floor')
+        new_room = request.form.get('new_room')
+        new_hostel = request.form.get('hostel_name')
+        new_entry = hostellite(username=new_name,hostel=new_hostel,room=new_room,floor=new_floor)
+
+        try:
+            hostellite_db.session.add(new_entry)
+            hostellite_db.session.commit()
+            data = hostellite.query.order_by(hostellite.username).all()
+            return render_template('add_hostellite.html', datas=data)
+        except:
+            flash("There was problem in accessing databse",category='error')
+            return render_template('add_hostellite.html')
+    
+    else:
+        data = hostellite.query.order_by(hostellite.username).all()
+        return render_template('add_hostellite.html',datas = data)

@@ -1,5 +1,8 @@
 #we will store standard route of our website
 from flask import Blueprint,render_template
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import login_required,current_user
+from .models import User,hostellite
 
 views = Blueprint('views',__name__)
 
@@ -19,7 +22,10 @@ def wardenlogin():
 def wardenRegister():
     return render_template('warden_register.html')
 
-@views.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')
-    
+@views.route('/dashboard<username>')
+def dashboard(username):
+    return render_template('dashboard.html',username)
+
+@views.route('add_hostellite')
+def add_hostellite():
+    return render_template('add_hostellite.html')

@@ -1,14 +1,7 @@
 {% extends 'login.html' %}
-
-
 {% block title %}<title>Warden Login</title>{% endblock %}
 {%block content %}
 {%block form %}<form method="post" action="{{url_for('auth.login')}}"> {% endblock %}
-<div class="txt_field">
-    <input type="text" id="hostel" name = "hostel"  required>
-    <span></span>
-    <label for="hostel">Your Hostel Name</label>
-</div>
 <div class="signup_link">
     Hostel Name not found? <br>
     <a href = "{{url_for('views.wardenRegister')}}">

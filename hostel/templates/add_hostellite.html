@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Hostellite</title>
+    <style>
+        table{
+            border: 2px solid blue;
+        }
+        td{
+            border: 1px solid blue;
+        }
+        th{
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <form action="{{url_for('auth.add_info')}}" method="post">
+    <label for="new_name">Name</label>
+    <input type="text" id="new_name" name="new_name"> <br>
+    <label for="hostel_name">Hostel</label>
+    <input type="text" id="hostel_name" name="hostel_name"> <br>
+    <label for="new_floor">Floor</label>
+    <input type="text" id="new_floor" name="new_floor"> <br>
+    <label for="new_room">Room</label>
+    <input type="text" id="new_room" name="new_room"> <br>
+    <input type="submit" value="add">
+    </form>
+    <table>
+        <caption>Past Details</caption>
+        <tr>
+            <th>username</th>
+            <th>Hostel</th>
+            <th>Room</th>
+            <th>Floor</th>
+        </tr>
+        {% for content in datas %}
+        <tr>
+            <td>{{content.username}}</td>
+            <td>{{content.hostel}}</td>
+            <td>{{content.room}}</td>
+            <td>{{content.floor}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

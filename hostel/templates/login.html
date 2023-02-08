@@ -6,6 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block title %}<title>Document</title>{% endblock %}
         <link rel = "stylesheet" href="static\login.css">
+        <style>
+            img[id="imginit"]{
+                position: relative;
+                margin-left: 120px;
+            }
+        </style>
         {% block head %} {% endblock %}
     </head>     
     <body>
@@ -21,12 +27,13 @@
         {%  endif %}
         {% endwith %}
         <div class = "centre">
+            <img src="static\others.png" alt="students" width="150px" height="90px" id="imginit">
             <h1>HostelHub
                 Login
             </h1>
 
             {% block form %}
-            <form method="post" action="{{url_for('views.wardenlogin')}}">
+            <form method="post" action="{{url_for('auth.hostellite_login')}}">
             {% endblock %}
 
                 <!-- for Username -->
@@ -42,10 +49,12 @@
                     <span></span>
                     <label for="password">Password</label>
                 </div>
-                {% block content %}
-                <div class="pass">
-                    Forgot Password ?
+                <div class="txt_field">
+                    <input type="text" id="hostel" name = "hostel"  required>
+                    <span></span>
+                    <label for="hostel">Your Hostel Name</label>
                 </div>
+                {% block content %}
                 <input type="submit" value="Login" name="submit"> <br>   
             </form>
             {% endblock %}
