@@ -11,4 +11,5 @@ Course CSE100 project <br>
   use: pip install flask-sqlalchemy  
   <li>flask login</li>
   use: pip install flask-login 
+  <li> Other used : werkzeug.security </li>
 </ol>
