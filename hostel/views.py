@@ -29,3 +29,12 @@ def dashboard(username):
 @views.route('add_hostellite')
 def add_hostellite():
     return render_template('add_hostellite.html')
+
+@views.route('add_mess')
+def add_mess():
+    return render_template('add_mess.html')
+
+
+@views.route('warden_dahsboard')
+def warden_dashboard():
+    return render_template('warden_dashboard.html')

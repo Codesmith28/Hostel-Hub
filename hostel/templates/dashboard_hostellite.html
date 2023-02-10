@@ -18,8 +18,8 @@
         <ul>
           <li>
             <a href="#" class="logo">
-              <img src="./pic/logo.jpg" />
-              <span class="nav-item">Admin</span>
+              <img src="https://imgs.search.brave.com/J0Qf01tOs4e_SLcUAve9f_WOxYYDoTHflPALjXxgrMg/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC50/ZzZUWkpzamZVR0o3/dmlTc2JYQ0JRSGFI/YSZwaWQ9QXBp" />
+              <span class="nav-item">{{username}}</span>
             </a>
           </li>
           <li>
@@ -72,75 +72,40 @@
               Hostel : {{hostel}}
               <!-- Residence:  -->
               <br />
-              Institution:
-              <!-- University -->
-              <br />
-              Stream:
-              <!-- Stream -->
             </div>
 
             <div class="per"></div>
             <button>Profile</button>
           </div>
         </div>
-
+        {% block content %}
         <section class="attendance">
           <div class="attendance-list">
             <h1>Mess</h1>
             <table class="table">
               <thead>
                 <tr>
-                  <th>Sr.No.</th>
                   <th>Food</th>
-                  <th>Type</th>
-                  <th>Date</th>
-                  <th>Start Time</th>
-                  <th>End Time</th>
+                  <th>type</th>
+                  <th>Day</th>
                   <th>Details</th>
                 </tr>
               </thead>
               <tbody>
+                {% for order in orders %}
                 <tr>
-                  <td>01</td>
-                  <td>Sam David</td>
-                  <td>Breakfast</td>
-                  <td>03-24-22</td>
-                  <td>7:00</td>
-                  <td>9:30</td>
+                  <td>{{order.food}}</td>
+                  <td>{{order.type}}</td>
+                  <td>{{order.day}}</td>
                   <td><button>View</button></td>
-                </tr>
-                <tr>
-                  <td>02</td>
-                  <td>Balbina Kherr</td>
-                  <td>Lunch</td>
-                  <td>03-24-22</td>
-                  <td>11:00</td>
-                  <td>14:00</td>
-                  <td><button>View</button></td>
-                </tr>
-                <tr>
-                  <td>03</td>
-                  <td>Badan John</td>
-                  <td>Evening Snacks</td>
-                  <td>03-24-22</td>
-                  <td>16:00</td>
-                  <td>16:30</td>
-                  <td><button>View</button></td>
-                </tr>
-                <tr>
-                  <td>04</td>
-                  <td>Sara David</td>
-                  <td>Dinner</td>
-                  <td>03-24-22</td>
-                  <td>19:30</td>
-                  <td>22:00</td>
-                  <td><button>View</button></td>
-                </tr>
+                </tr>    
+                {% endfor %}
               </tbody>
             </table>
           </div>
         </section>
       </section>
     </div>
+    {% endblock %}
   </body>
 </html>

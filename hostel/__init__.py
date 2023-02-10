@@ -12,6 +12,9 @@ DB_NAME = "database.db"
 hostellite_db = SQLAlchemy()
 DB_NAME_H = "hostellite.db"
 
+mess_db = SQLAlchemy()
+DB_NAME_M = "mess.db"
+
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'hostel_manage'
@@ -21,6 +24,9 @@ def create_app():
 
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME_H}'
     hostellite_db.init_app(app)
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME_M}'
+    mess_db.init_app(app)
 
     from .views import views
     from .auth import auth
@@ -32,4 +38,5 @@ def create_app():
     with app.app_context():
         db.create_all()
         hostellite_db.create_all()
+        mess_db.create_all()
     return app

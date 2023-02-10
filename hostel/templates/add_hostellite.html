@@ -7,17 +7,33 @@
     <title>Add Hostellite</title>
     <style>
         table{
-            border: 2px solid blue;
+            margin-left: 155px;
+            position: relative;
+            text-align: center;
+            background:bisque;
         }
         td{
+            text-align: center;
             border: 1px solid blue;
+            position: relative;
+            max-width: 100%;
+            padding: 40px 80px;
         }
         th{
+            position: relative;
+            text-align: center;
             border: 1px solid blue;
+            max-width: 100%;
+        }
+        input{
+            border: 1px solid aqua;
+            border-radius: 8px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
+    <h1 align="center">Create Hostellite Account</h1>
     <form action="{{url_for('auth.add_info')}}" method="post">
     <label for="new_name">Name</label>
     <input type="text" id="new_name" name="new_name"> <br>
@@ -25,8 +41,10 @@
     <input type="text" id="hostel_name" name="hostel_name"> <br>
     <label for="new_floor">Floor</label>
     <input type="text" id="new_floor" name="new_floor"> <br>
-    <label for="new_room">Room</label>
+    <label for="new_room">Room</label>                  
     <input type="text" id="new_room" name="new_room"> <br>
+    <label for="check_pass">Enter your password</label>
+    <input type="password" name="check_pass" id="check_pass"> <br>
     <input type="submit" value="add">
     </form>
     <table>

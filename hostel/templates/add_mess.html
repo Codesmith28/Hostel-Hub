@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{{url_for('auth.add_mess')}}" method="post">
+    <table>
+        <tr>
+            <th>Food</th>
+            <th>Type</th>
+            <th>Day</th>
+        </tr>
+        <tr>
+            <td><input type="text" name="food"></td>
+            <td><input type="text" name="type"></td>
+            <td><input type="text" name="day"></td>
+        </tr>
+    </table>
+    <input type="submit">
+    </form>
+    <table>
+        <caption>Summary</caption>
+        <tr>
+            <th>Food</th>
+            <th>Type</th>
+            <th>Day</th>
+        </tr>
+        {% for ord in orders %}
+        <tr>
+            <td>{{ord.food}}</td>
+            <td>{{ord.type}}</td>
+            <td>{{ord.day}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
