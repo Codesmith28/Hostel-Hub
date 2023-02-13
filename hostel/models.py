@@ -1,6 +1,7 @@
 from . import db
 from . import hostellite_db
 from . import mess_db
+from . import message_db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from datetime import datetime
@@ -26,3 +27,8 @@ class mess(mess_db.Model , UserMixin):
     type = mess_db.Column(mess_db.String(60))
     day = mess_db.Column(mess_db.String(50))
     
+class message(message_db.Model , UserMixin):
+    id = message_db.Column(message_db.Integer,primary_key = True)
+    username = message_db.Column(message_db.String(60))
+    subject = message_db.Column(message_db.String(120))
+    info = message_db.Column(message_db.String(200))

@@ -4,36 +4,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add mess</title>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        td[id="td1"]{
+            padding: 15px 305px 15px 20px;
+            border: 2px solid blue;
+            background: aquamarine;
+        }
+        td[id="td"]{
+            text-align: center;
+            padding: 15px 105px 15px 20px;
+            border: 2px solid blue;
+            background: aquamarine;
+        }
+        .sub{
+            text-align: center;
+        }
+        caption{
+            font-size: 30px;
+            color: darkslateblue;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
 </head>
 <body>
     <form action="{{url_for('auth.add_mess')}}" method="post">
-    <table>
+    <table align="center">
         <tr>
             <th>Food</th>
             <th>Type</th>
             <th>Day</th>
         </tr>
         <tr>
-            <td><input type="text" name="food"></td>
-            <td><input type="text" name="type"></td>
-            <td><input type="text" name="day"></td>
+            <td id="td"><input type="text" name="food"></td>
+            <td id="td"><input type="text" name="type"></td>
+            <td id="td"><input type="text" name="day"></td> <br>
         </tr>
     </table>
-    <input type="submit">
+    <div class="sub">
+    <input type="submit"> <br>
+    </div>
     </form>
-    <table>
-        <caption>Summary</caption>
+    <table align="center"> <br> <br>
+        <caption>Summary</caption> <br> <br>
         <tr>
-            <th>Food</th>
-            <th>Type</th>
-            <th>Day</th>
+            <th id="td1">Food</th>
+            <th id="td1">Type</th>
+            <th id="td1">Day</th>
         </tr>
         {% for ord in orders %}
         <tr>
-            <td>{{ord.food}}</td>
-            <td>{{ord.type}}</td>
-            <td>{{ord.day}}</td>
+            <td id="td1">{{ord.food}}</td>
+            <td id="td1">{{ord.type}}</td>
+            <td id="td1">{{ord.day}}</td>
         </tr>
         {% endfor %}
     </table>

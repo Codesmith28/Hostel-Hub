@@ -1,13 +1,13 @@
 from flask import Blueprint,render_template,request,flash,redirect,url_for
-from .models import User,hostellite,mess
+from .models import User,hostellite,mess,message
 from werkzeug.security import generate_password_hash,check_password_hash
 from . import db
 from flask_login import login_user , login_required , logout_user , current_user
 from . import hostellite_db
 from . import mess_db
+from . import message_db
 
 auth = Blueprint('auth',__name__)
-
 
 @auth.route('/login',methods=['GET','POST'])
 def login():
@@ -120,3 +120,29 @@ def hostellite_login():
             return render_template('login.html')
     return render_template('login.html')
 
+@auth.route('/send_message',methods=['GET','POST'])
+def send_message():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        subject = request.form.get('Subject')
+        query = request.form.get('Query')
+        to_add = message(username = username,subject=subject,info=query)
+
+        try:
+            message_db.session.add(to_add)
+            message_db.session.commit()
+            return render_template('RoomandServices.html')
+        except:
+            flash("There was problem sending your message",category='error')
+            return render_template('RoomandServices.html')
+    else:
+        return render_template('RoomandServices.html')
+
+
+@auth.route('/get_message',methods=['GET','POST'])
+def read_messages():
+    if request.method == 'POST':
+        info = message.query.order_by(message.username).all()
+        return render_template('message_for_warden.html',infos=info)
+    else:
+        return render_template('message_for_warden.html')

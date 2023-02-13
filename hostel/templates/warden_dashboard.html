@@ -1,6 +1,29 @@
 {% extends 'dashboard_hostellite.html' %}
-
+{% block title %} <title>Warden dashboard</title> {% endblock %}
 {% block content %}
-<a href="{{url_for('views.add_hostellite')}}">Add Hostellite</a><br>
-<a href="{{url_for('views.add_mess')}}">ADD/UPDATE mess menu</a>
+<style>
+    .ql{
+        text-align: center;
+        font-size: 70px;
+        font-family:'Courier New', Courier, monospace;
+        color:darkblue;
+    }
+    a[id="link1"],a[id="link2"]{
+        font-size: 20px;
+    }
+</style>
+
+{% block link %} 
+    <a href="{{url_for('views.message_for_warden')}}"> 
+{% endblock %}
+
+</a>
+<div class="ql">
+Quick Links <br><br>
+</div>
+<hr>
+<div class="links">
+<a href="{{url_for('views.add_hostellite')}}" id="link1">Add Hostellite</a><br>
+<a href="{{url_for('views.add_mess')}}" id="link2">ADD/UPDATE mess menu</a>
+</div>
 {% endblock %}

@@ -38,3 +38,15 @@ def add_mess():
 @views.route('warden_dahsboard')
 def warden_dashboard():
     return render_template('warden_dashboard.html')
+
+@views.route('/roomsandservices')
+def roomands():
+    return render_template('RoomandServices.html')
+
+@views.route('/rent')
+def rent():
+    return render_template('hhpaymentform.html')
+
+@views.route('/messageforwardem')
+def message_for_warden():
+    return render_template('message_for_warden.html')

@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="static\RoomandServices.css">
 </head>
 <body>
-    <form>
+    {% block form %} <form method="post" action="{{url_for('auth.send_message')}}"> {% endblock %}
     <div>
     <h1>Room & Services</h1>
+    {% block content %}
+    <p>Name: <input type="text" name="username" placeholder="Enter Name" required></p>
     <p>Subject :  <input type="text" name="Subject" placeholder="Enter Subject" required></p>
     <p><textarea name="Query" id="" cols="80" rows="20" placeholder="Enter your Query Here" required></textarea></p>
-    <p><input type="submit" value="Submit"> <input type="reset" value="Reset"></p>
+    <p><input type="submit" value="Submit"></p>
     </form>
+    {% endblock %}
 </div>
 </body>
 </html>
