@@ -1,13 +1,10 @@
 {% extends 'RoomandServices.html' %}
 {% block form %}<form action="{{url_for('auth.read_messages')}}" method="post">
-    <input type="submit" value="Get Messages" id="get">
+    <input align = "center" type="submit" value="Get Messages" id="get">
     </form>
     {% endblock %}
 {% block content %}
 <style>
-    input[id="get"]{
-        text-align: center;
-    }
     .blocks{
         border: 2px solid blue;
         margin-bottom: 10px;

@@ -21,18 +21,26 @@ MESSAGE_DB = "message.db"
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'hostel_manage'
-    
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+
+    app.config['SQLALCHEMY_BINDS'] = {
+        "warden_db": f'sqlite:///{DB_NAME}',
+        "hostellite_db": f'sqlite:///{DB_NAME_H}',
+        "mess_db": f'sqlite:///{DB_NAME_M}',
+        "message_db": f'sqlite:///{MESSAGE_DB}'
+    }
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
     db.init_app(app)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME_H}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///hostellite.db'
     hostellite_db.init_app(app)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME_M}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mess.db'
     mess_db.init_app(app)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{MESSAGE_DB}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///message.db'
     message_db.init_app(app)
+
 
     from .views import views
     from .auth import auth

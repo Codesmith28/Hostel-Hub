@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOSTELHUB login</title>
     <style>
+      body{
+        background-color:azure;
+      }
 .row {
   display: flex;
   text-align: center;
@@ -50,16 +53,18 @@ button[id="logintype_warden"]{
     </style>
 </head>
 <body>
-    <h1 align="center" style="color:cyan;font-family:monospace; font-size: 52px;">HOSTELHUB</h1>
+    <h1 align="center" style="color:cyan;font-family:Arial, Helvetica, sans-serif; font-size: 52px;">HOSTELHUB</h1>
     <div class="row">
         <div class="column">
-          <form action="/" method="post" id="form1">
+          <form action="{{url_for('views.wardenlogin')}}">
           <div class="img1"><img src="static\warden_logo.png" alt="warden_logo" style="width:75%"></div>
-          <button id="logintype_warden"><a href="{{url_for('views.wardenlogin')}}">Warden login</a></button>
+          <button id="logintype_warden">Warden login</button>
+        </form>
         </div>
         <div class="column">
           <div class="img2"><img src="static\hostelite.jpg" alt="hostelite_logo" style="width:75%"></div>
-          <button id = "logintype"><a href="{{url_for('views.hostellitelogin')}}">Hostelite login</a></button>
+          <form action="{{url_for('views.hostellitelogin')}}">
+          <button id = "logintype">Hostelite login</button>
         </form>
         </div>
       </div>
