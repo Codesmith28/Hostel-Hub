@@ -13,3 +13,5 @@ Course CSE100 project <br>
   use: pip install flask-login 
   <li> Other used : werkzeug.security </li>
 </ol>
+<b> to make sure you have all requirements satisfied..... run the following on the terminal of your code editor : <b> <br>
+  pip install -r requirements.txt
