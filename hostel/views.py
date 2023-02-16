@@ -22,10 +22,6 @@ def wardenlogin():
 def wardenRegister():
     return render_template('warden_register.html')
 
-@views.route('/dashboard<username>')
-def dashboard(username):
-    return render_template('dashboard.html',username)
-
 @views.route('add_hostellite')
 def add_hostellite():
     return render_template('add_hostellite.html')

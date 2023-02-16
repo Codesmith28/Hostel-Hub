@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <style>
+    .prof{
+      position: relative;
+      text-align: center;
+      border: 5px solid aqua;
+      border-radius: 10px;
+      max-width: 45%;
+      margin-left: 380px;
+      margin-top: 150px;
+    }
+  </style>
+</head>
+<body>
+  <div class="prof">
+    <img src="https://imgs.search.brave.com/J0Qf01tOs4e_SLcUAve9f_WOxYYDoTHflPALjXxgrMg/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC50/ZzZUWkpzamZVR0o3/dmlTc2JYQ0JRSGFI/YSZwaWQ9QXBp" alt="user_alt_img"> <br>
+    <div class="details">
+    Name : {{user.username}} <br> 
+    Hostel: {{user.hostel}} <br>
+    Floor : {{user.floor}} <br>
+    Room Number : {{user.room}}
+    </div>
+  </div>
+</body>
+</html>

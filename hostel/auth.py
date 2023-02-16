@@ -48,6 +48,9 @@ def signup():
         if user:
             flash('Username already exists',category='error')
             return render_template('warden_register.html')
+        elif hostel:
+            flash('A warden account has already been created for the entered hostel. You can\'t create more than one warden account.',category='error')
+            return render_template('warden_register.html')
         if len(username) < 1:
             flash("Please enter a valid username.",category='error')
         elif len(password) < 7:
@@ -146,3 +149,8 @@ def read_messages():
         return render_template('message_for_warden.html',infos=info)
     else:
         return render_template('message_for_warden.html')
+
+@auth.route('/show_profile/<username>', methods=['GET', 'POST'])
+def show_profile(username):
+    user_detail = hostellite.query.filter_by(username=username).first()
+    return render_template('profile_user.html',  user=user_detail)

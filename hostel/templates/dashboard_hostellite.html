@@ -6,11 +6,25 @@
     <meta charset="UTF-8" />
     {% block title %}<title>Hostellite Dashboard</title> {% endblock %}
     <link rel="stylesheet" href="{{url_for('static',filename='dashboard_hostellite.css')}}" />
-    <!-- Font Awesome Cdn Link -->
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <style>
+      .per{
+        position: relative;
+        max-width: 65%;
+        margin-left: 180px;
+        text-align: center;
+        border: 6px solid aqua;
+        border-radius: 20px;
+      }
+      a[id="tocen"]{
+        padding-right: 45%;
+        padding-left: 50%;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -33,7 +47,7 @@
             <a href="{{url_for('views.roomands')}}"> 
             {% endblock %}
               <i class="fas fa-comment"></i>
-              <span class="nav-item">Message</span>
+              <span class="nav-item">Queries</span>
             </a> 
           </li>
           <li>
@@ -72,18 +86,20 @@
 
             <div class="col">
               Hostel : {{hostel}}
-              <!-- Residence:  -->
-              <br />
+              <br/>
             </div>
 
-            <div class="per"></div>
-            <button>Profile</button>
+            <div class="per">
+              <a href="{{url_for('auth.show_profile',username=username)}}" id="tocen">
+            Profile
+          </a>
+            </div>
           </div>
         </div>
         {% block content %}
         <section class="attendance">
           <div class="attendance-list">
-            <h1>Mess</h1>
+            <h1>Menu</h1>
             <table class="table">
               <thead>
                 <tr>
