@@ -1,7 +1,9 @@
 <!-- @format -->
 
 {% extends 'dashboard_hostellite.html' %} {% block title %}
-<title>Warden dashboard</title> {% endblock %} {% block content %}
+<title>Warden dashboard</title> {% endblock %} 
+{% block link %}<a href="{{url_for('views.message_for_warden')}}"> {% endblock %} </a>
+{% block content %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,12 +15,10 @@
 <style>
   .ql {
     font-family: "Phudu", cursive;
-
     text-align: center;
     font-size: 70px;
     color: rgb(0, 81, 255);
   }
-
   .links {
     font-size: 20px;
     align-items: center;
@@ -29,7 +29,7 @@
   .links > a {
     text-decoration: none;
     text-align: center;
-    color: black;
+    color: blue;
     padding: 10px;
     border: 2px solid rgb(0, 81, 255);
     border-radius: 10px;
@@ -42,9 +42,6 @@
     border: 5px teal solid;
   }
 </style>
-
-{% block link %}
-<a href="{{url_for('views.message_for_warden')}}"> {% endblock %} </a>
 <div class="ql">Quick Links <br /><br /></div>
 <hr />
 <div class="links">

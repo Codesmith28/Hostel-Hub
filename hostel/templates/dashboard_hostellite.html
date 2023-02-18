@@ -12,6 +12,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <style>
+      tbody{
+        color:aqua;
+      }
       .per{
         position: relative;
         max-width: 65%;
@@ -23,6 +26,13 @@
       a[id="tocen"]{
         padding-right: 45%;
         padding-left: 50%;
+      }
+      .dark-mode{
+        background-color: black;
+        color:white;
+      }
+      h1{
+        text-align: center;
       }
     </style>
   </head>
@@ -59,10 +69,17 @@
           <li>
             <a href="#">
               <i class="fas fa-cog"></i>
-              <span class="nav-item">Setting</span>
+              <span class="nav-item">
+                <button onclick="myFunction()">Toggle light or <br> dark Mode</button>
+              </span>
             </a>
           </li>
-
+          <script>
+            function myFunction() {
+               var element = document.body;
+               element.classList.toggle("dark-mode");
+            }
+            </script>
           <li>
             <a href="#" class="logout">
               <i class="fas fa-sign-out-alt"></i>
@@ -74,7 +91,7 @@
 
       <section class="main">
         <div class="main-top">
-          <h1>Dashboard</h1>
+          <h1 align="center">Dashboard</h1>
           <i class="fas fa-user-cog"></i>
         </div>
         <div class="users">
