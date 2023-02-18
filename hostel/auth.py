@@ -25,6 +25,9 @@ def login():
                 else:
                     flash('Incorrect Password Entered',category='error')
                     return render_template('warden_login.html')
+            else:
+                 flash('Hostel name not found correct for given username',category='error')
+                 return render_template('warden_login.html')       
         else:
             flash("Username doesn\'t exists. Please signup to get your hostel access to our site",category='error')    
             return render_template('warden_login.html')
