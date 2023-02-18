@@ -49,9 +49,6 @@ def signup():
         if user:
             flash('Username already exists',category='error')
             return render_template('warden_register.html')
-        elif hostel_h:
-            flash('A warden account has already been created for the entered hostel. You can\'t create more than one warden account.',category='error')
-            return render_template('warden_register.html')
         if len(username) < 1:
             flash("Please enter a valid username.",category='error')
         elif len(password) < 7:

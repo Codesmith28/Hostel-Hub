@@ -1,54 +1,55 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Payment form</title>
-    <link rel="stylesheet" href="static\pay.css">
+    <link rel="stylesheet" href="static\pay.css" />
     <style>
-        form{
-            text-align: center;
-            position: relative;
-        }
+      body {
+        text-align: center;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      form {
+        position: relative;
+      }
+      .c {
+        width: min(80%, 700px);
+      }
+
+      img {
+        width: 45%;
+        height: 45%;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="c">
-    <form>
+      <form>
         <h1 class="d">PAYMENT FORM</h1>
-        <p>Name:  <input type="text" name="name" required ></p>
-        <fieldset>
-            <legend >Gender </legend>
-        <p> 
-            Male <input type="radio" name="gender" id="">
-            Female <input type="radio" name="gender" id="">
-            Other <input type="radio" name="gender" id="">
+        <p>Name: <input type="text" name="name" required /></p>
+        
+        <!-- section to add room number -->
+        <p>Room number: <input type="text" name="room" required /></p>
+        
+        <p>Phone number: <input type="text" name="phone" required /></p>
+
+        <p>Email: <input type="email" name="email" id="" required /></p>
+        <h2 class="e">PAYMENT INFORMATION</h2>
+
+        <!-- add a qr code image below-->
+        <img src="static\qr.png" alt="" />
+
+        <p>
+          <input type="submit" value="Pay" />
         </p>
-    </fieldset>
-    <p>Email: <input type="email" name="email" id=""required></p>
-    <h2 class="e">PAYMENT INFORMATION</h2>
-    <p>CARD TYPE:
-        <select>
-            <option value="">--select a card type--</option>
-            <option value="credit card">Credit card</option>
-            <option value="debit card">Debit card</option>
-            <option value="rupeey">rupeey</option>
-            <option value="upi">UPI</option>
-        </select>
-    </p>
-    <p> 
-        Card Holder Name: <input type="text" name="Card Holder Name" id=""required></p>
-    <p>   card number: <input type="number" name="card number" id=""required>
-    </p>
-    <p>
-        Expireation Date: <input type="date" name="Expireation Date" id=""required>
-    </p>
-    <p>
-        CVV: <input type="password" name="CVV" id=""required>
-    </p>
-    <p><input type="submit" value="PayNow"><input type="reset" value="Reset">
-    </form>
+      </form>
     </div>
-</body>
+  </body>
 </html>
