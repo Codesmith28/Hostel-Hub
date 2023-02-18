@@ -1,72 +1,98 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Phudu:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <title>HOSTELHUB login</title>
     <style>
-      body{
-        background-color:azure;
+      body {
+        background-color: lightcyan;
       }
-.row {
-  display: flex;
-  text-align: center;
-}
-.column {
-  flex: 33.33%;
-  padding: 5px;
-  border:8px solid rgb(126, 234, 230);
-  margin-right: 20px;
-  border-radius: 10px;
-} 
-.img1{
-    margin-left: 60px;
-}
-.img2{
-    margin-left: 100px;
-    margin-right: 100px;
-}
-button[id="logintype"],button[id="logintype_warden"]{
-  background: burlywood;
-  text-align: center;
-  height: 45px;
-  width: 170px;
-  font-size: 20px;
-  font-family:Georgia, 'Times New Roman', Times, serif;
-}
-button[id="logintype"]:hover{
-height: 50px;
-width: 175px;
-cursor: pointer;
-background: grey;
-}
-button[id="logintype_warden"]:hover{
-height: 50px;
-width: 175px;
-cursor: pointer;
-background: grey;
-}
-button[id="logintype_warden"]{
-  margin-top: 63px;
-}
+      /* change the font style of h1 */
+      h1 {
+        font-family: "Phudu", cursive;
+        font-size: 75px;
+        color: rgb(0, 81, 255);
+        text-align: center;
+      }
+      .row {
+        display: flex;
+        text-align: center;
+      }
+      .column {
+        flex: 33.33%;
+        padding: 5px;
+        border: 8px solid lightseagreen;
+        margin-right: 20px;
+        border-radius: 10px;
+      }
+
+      .img1 {
+        text-align: center;
+        margin-top: 20px;
+      }
+      .img2 {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      button[id="logintype"],
+      button[id="logintype_warden"] {
+        background: white;
+        border-radius: 15px;
+        text-align: center;
+        height: 45px;
+        width: 170px;
+        font-size: 20px;
+        margin-top: 63px;
+        font-family: "Phudu", cursive;
+        transition: border 0.1s;
+        margin-bottom: 10px;
+      }
+      button[id="logintype"]:hover {
+        border: 5px solid lightseagreen;
+        color: lightseagreen;
+      }
+      button[id="logintype_warden"]:hover {
+        border: 5px solid lightseagreen;
+        color: lightseagreen;
+      }
     </style>
-</head>
-<body>
-    <h1 align="center" style="color:cyan;font-family:'Times New Roman', Times, serif; font-size: 52px;">HOSTELHUB</h1>
+  </head>
+  <body>
+    <h1>HOSTELHUB</h1>
     <div class="row">
-        <div class="column">
-          <form action="{{url_for('views.wardenlogin')}}">
-          <div class="img1"><img src="static\warden_logo.png" alt="warden_logo" style="width:75%"></div>
+      <div class="column">
+        <form action="{{url_for('views.wardenlogin')}}">
+          <div class="img1">
+            <img
+              src="static\warden_logo (Custom).png"
+              alt="warden_logo"
+              style="width: 50%"
+            />
+          </div>
           <button id="logintype_warden">Warden login</button>
         </form>
-        </div>
-        <div class="column">
-          <div class="img2"><img src="static\hostelite.jpg" alt="hostelite_logo" style="width:75%"></div>
-          <form action="{{url_for('views.hostellitelogin')}}">
-          <button id = "logintype">Hostelite login</button>
-        </form>
-        </div>
       </div>
-</body>
+      <div class="column">
+        <div class="img2">
+          <img
+            src="static\hostelite (Custom).jpg"
+            alt="hostelite_logo"
+            style="width: 50%"
+          />
+        </div>
+        <form action="{{url_for('views.hostellitelogin')}}">
+          <button id="logintype">Hostelite login</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

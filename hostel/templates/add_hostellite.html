@@ -1,71 +1,137 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Phudu:wght@600&display=swap"
+      rel="stylesheet"
+    />
+
     <title>Add Hostellite</title>
     <style>
-        body{
-            background-color: antiquewhite;
-        }
-        table{
-            margin-left: 155px;
-            position: relative;
-            text-align: center;
-            background:bisque;
-        }
-        td{
-            text-align: center;
-            border: 3px solid blue;
-            position: relative;
-            max-width: 100%;
-            padding: 40px 80px;
-        }
-        th{
-            position: relative;
-            text-align: center;
-            border: 3px solid blue;
-            max-width: 100%;
-        }
-        input{
-            border: 1px solid aqua;
-            border-radius: 8px;
-            margin-top: 20px;
-        }
+      h1 {
+        font-family: "Phudu", cursive;
+        font-size: 55px;
+        color: rgb(0, 81, 255);
+      }
+
+      body {
+        background-color: lightcyan;
+        display: flex;
+        align-items: center;
+        justify-self: center;
+        flex-direction: column;
+        font-family: "Phudu", cursive;
+      }
+      table {
+        margin: 150px;
+        position: relative;
+        text-align: center;
+        background: white;
+        margin-top: 55px;
+      }
+
+      form {
+        font-size: 20px;
+        margin-left: 100px;
+      }
+
+      caption {
+        font-size: 30px;
+        color: black;
+        font-family: "Phudu", cursive;
+        margin-bottom: 20px;
+        border-top: 3px solid rgb(0, 81, 255);
+      }
+
+      td {
+        text-align: center;
+        border: 3px solid rgb(0, 81, 255);
+        position: relative;
+        max-width: 100%;
+        padding: 40px 80px;
+      }
+      th {
+        position: relative;
+        text-align: center;
+        border: 3px solid rgb(0, 81, 255);
+        max-width: 100%;
+        font-size: 19px;
+      }
+      input {
+        border: 1px solid rgb(0, 81, 255);
+        border-radius: 15px;
+        margin-top: 15px;
+        padding: 10px;
+        font-family: "Phudu", cursive;
+        cursor: beaming;
+        transition: 0.09s;
+        font-size: 15px;
+        text-align: center;
+      }
+
+      #add {
+        background-color: rgb(0, 81, 255);
+        color: white;
+        border: 1px solid rgb(0, 81, 255);
+        border-radius: 15px;
+        margin-top: 20px;
+        padding: 15px;
+        font-family: "Phudu", cursive;
+        cursor: pointer;
+        transition: border 0.09s;
+        margin-left: 155px;
+        font-size: 15px;
+        width: 100px;
+        margin-bottom: -15px;
+        
+      }
+
+      #add:hover {
+        border: 3px solid rgb(0, 81, 255);
+        color: rgb(0, 81, 255);
+        background-color: white;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1 align="center">Create Hostellite Account</h1>
     <form action="{{url_for('auth.add_info')}}" method="post">
-    <label for="new_name">Name</label>
-    <input type="text" id="new_name" name="new_name"> <br>
-    <label for="hostel_name">Hostel</label>
-    <input type="text" id="hostel_name" name="hostel_name"> <br>
-    <label for="new_floor">Floor</label>
-    <input type="text" id="new_floor" name="new_floor"> <br>
-    <label for="new_room">Room</label>                  
-    <input type="text" id="new_room" name="new_room"> <br>
-    <label for="check_pass">Enter your password</label>
-    <input type="password" name="check_pass" id="check_pass"> <br>
-    <input type="submit" value="add">
+      <label for="new_name">Name</label>
+      <input type="text" id="new_name" name="new_name" /> <br />
+      <label for="hostel_name">Hostel</label>
+      <input type="text" id="hostel_name" name="hostel_name" /> <br />
+      <label for="new_floor">Floor</label>
+      <input type="text" id="new_floor" name="new_floor" /> <br />
+      <label for="new_room">Room</label>
+      <input type="text" id="new_room" name="new_room" /> <br />
+      <label for="check_pass">Enter your password</label>
+      <input type="password" name="check_pass" id="check_pass" /> <br />
+      <input type="submit" value="add" id="add" />
     </form>
     <table>
-        <caption>Past Details</caption>
-        <tr>
-            <th>username</th>
-            <th>Hostel</th>
-            <th>Room</th>
-            <th>Floor</th>
-        </tr>
-        {% for content in datas %}
-        <tr>
-            <td>{{content.username}}</td>
-            <td>{{content.hostel}}</td>
-            <td>{{content.room}}</td>
-            <td>{{content.floor}}</td>
-        </tr>
-        {% endfor %}
+      <caption>
+        Past Details
+      </caption>
+      <tr>
+        <th>username</th>
+        <th>Hostel</th>
+        <th>Room</th>
+        <th>Floor</th>
+      </tr>
+      {% for content in datas %}
+      <tr>
+        <td>{{content.username}}</td>
+        <td>{{content.hostel}}</td>
+        <td>{{content.room}}</td>
+        <td>{{content.floor}}</td>
+      </tr>
+      {% endfor %}
     </table>
-</body>
+  </body>
 </html>
