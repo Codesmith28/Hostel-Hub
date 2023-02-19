@@ -4,44 +4,63 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    {% block title %}<title>Hostellite Dashboard</title> {% endblock %}
-    <link rel="stylesheet" href="{{url_for('static',filename='dashboard_hostellite.css')}}" />
+    {% block title %}
+    <title>Hostellite Dashboard</title>
+    {% endblock %}
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='dashboard_hostellite.css')}}"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Phudu:wght@600&display=swap"
+      rel="stylesheet"
+    />
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <style>
+<<<<<<< HEAD
       a[id="mode"]{
         cursor: pointer;
       }
       tbody{
         color:aqua;
+=======
+      tbody {
+        color: teal;
+>>>>>>> 6a2ac441bf8f3f1619bce909d60f9a0499427dee
       }
-      img[id="set"]{
-        margin-left: 10px;
+      /* customize the profile button */
+      #tocen {
+        background-color: teal;
+        color: white;
+        font-size: 16px;
         cursor: pointer;
-      }
-      .nav-item{
-        cursor: pointer;
-      }
-      .per{
-        position: relative;
-        max-width: 65%;
-        margin-left: 180px;
+        border-radius: 15px;
+        border: 3px solid teal;
         text-align: center;
-        border: 6px solid aqua;
-        border-radius: 20px;
+        align-items: center;
+        padding: 5px;
+        width: 100px;
+        margin-top: 15px;
+        transition: 0.1s;
+
       }
-      a[id="tocen"]{
-        padding-right: 45%;
-        padding-left: 50%;
+      /* hover setting */
+      #tocen:hover {
+        background-color: turquoise;
+        color: teal;
+        border: 3px solid teal;
       }
-      .dark-mode{
+
+      .dark-mode {
         background-color: black;
-        color:white;
+        color: white;
       }
-      h1{
+      h1 {
         text-align: center;
       }
     </style>
@@ -52,10 +71,13 @@
         <ul>
           <li>
             <a href="#" class="logo">
-              <img src="https://imgs.search.brave.com/J0Qf01tOs4e_SLcUAve9f_WOxYYDoTHflPALjXxgrMg/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC50/ZzZUWkpzamZVR0o3/dmlTc2JYQ0JRSGFI/YSZwaWQ9QXBp" />
+              <img
+                src="https://imgs.search.brave.com/J0Qf01tOs4e_SLcUAve9f_WOxYYDoTHflPALjXxgrMg/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC50/ZzZUWkpzamZVR0o3/dmlTc2JYQ0JRSGFI/YSZwaWQ9QXBp"
+              />
               <span class="nav-item">{{username}}</span>
             </a>
           </li>
+
           <li>
             <a href="#">
               <i class="fas fa-menorah"></i>
@@ -63,33 +85,46 @@
             </a>
           </li>
           <li>
-            {% block link %} 
-            <a href="{{url_for('views.roomands')}}"> 
-            {% endblock %}
+            {% block link %}
+            <a href="{{url_for('views.roomands')}}">
+              {% endblock %}
               <i class="fas fa-comment"></i>
+<<<<<<< HEAD
               <span class="nav-item"><b>Queries</b></span>
             </a> 
+=======
+              <span class="nav-item">Queries</span>
+            </a>
+>>>>>>> 6a2ac441bf8f3f1619bce909d60f9a0499427dee
           </li>
           <li>
-            {% block link1 %} <a href="{{url_for('views.rent')}}"> {% endblock %}
+            {% block link1 %}
+            <a href="{{url_for('views.rent')}}">
+              {% endblock %}
               <i class="fas fa-database"></i>
               <span class="nav-item"><b>Rent</b></span>
             </a>
           </li>
           <li>
+<<<<<<< HEAD
             <a onclick="myFunction()" id="mode">
               <span class="nav-item">
                 <img width="29px" height="25px" src="data:image/jpeg;base64,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" id="set" alt="settings"> <t>
                 <b>Toggle light/dark Mode</b>
               </span>
+=======
+            <a onclick="myFunction()">
+              <i class="fas fa-moon"></i>
+              <span class="nav-item">Dark/Light</span>
+>>>>>>> 6a2ac441bf8f3f1619bce909d60f9a0499427dee
             </a>
           </li>
           <script>
             function myFunction() {
-               var element = document.body;
-               element.classList.toggle("dark-mode");
+              var element = document.body;
+              element.classList.toggle("dark-mode");
             }
-            </script>
+          </script>
           <li>
             <a href="#" class="logout">
               <i class="fas fa-sign-out-alt"></i>
@@ -107,19 +142,24 @@
         <div class="users">
           <div class="card">
             <div class="col">
-              <img src="https://imgs.search.brave.com/J0Qf01tOs4e_SLcUAve9f_WOxYYDoTHflPALjXxgrMg/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC50/ZzZUWkpzamZVR0o3/dmlTc2JYQ0JRSGFI/YSZwaWQ9QXBp" />
+              <img
+                src="https://imgs.search.brave.com/J0Qf01tOs4e_SLcUAve9f_WOxYYDoTHflPALjXxgrMg/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC50/ZzZUWkpzamZVR0o3/dmlTc2JYQ0JRSGFI/YSZwaWQ9QXBp"
+              />
               <h4>{{username}}</h4>
             </div>
 
             <div class="col">
               Hostel : {{hostel}}
-              <br/>
+              <br />
             </div>
 
-            <div class="per">
-              <a href="{{url_for('auth.show_profile',username=username)}}" id="tocen">
-            Profile
-          </a>
+            <div class="profile">
+              <a
+                href="{{url_for('auth.show_profile',username=username)}}"
+                id="tocen"
+              >
+                Profile
+              </a>
             </div>
           </div>
         </div>
@@ -143,7 +183,7 @@
                   <td>{{order.type}}</td>
                   <td>{{order.day}}</td>
                   <td><button>View</button></td>
-                </tr>    
+                </tr>
                 {% endfor %}
               </tbody>
             </table>

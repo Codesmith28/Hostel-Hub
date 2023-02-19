@@ -139,6 +139,10 @@
    border-radius: 10px;
    background: rgb(223, 223, 223);
  }
+
+ h1{
+  font-family: Phudu,cursive;
+ }
  .users td {
    font-size: 14px;
    padding-right: 15px;
