@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_required,current_user
 from .models import User,hostellite
 from . import mess_db
-import json
 views = Blueprint('views',__name__)
 
 @views.route('/')
