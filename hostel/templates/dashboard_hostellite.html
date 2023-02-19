@@ -4,18 +4,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    {% block title %}<title>Hostellite Dashboard</title> {% endblock %}
-    <link rel="stylesheet" href="{{url_for('static',filename='dashboard_hostellite.css')}}" />
+    {% block title %}
+    <title>Hostellite Dashboard</title>
+    {% endblock %}
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='dashboard_hostellite.css')}}"
+    />
 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <style>
-      tbody{
-        color:aqua;
+      tbody {
+        color: aqua;
       }
-      .per{
+      .per {
         position: relative;
         max-width: 65%;
         margin-left: 180px;
@@ -23,15 +28,15 @@
         border: 6px solid aqua;
         border-radius: 20px;
       }
-      a[id="tocen"]{
+      a[id="tocen"] {
         padding-right: 45%;
         padding-left: 50%;
       }
-      .dark-mode{
+      .dark-mode {
         background-color: black;
-        color:white;
+        color: white;
       }
-      h1{
+      h1 {
         text-align: center;
       }
     </style>
@@ -42,10 +47,13 @@
         <ul>
           <li>
             <a href="#" class="logo">
-              <img src="https://imgs.search.brave.com/J0Qf01tOs4e_SLcUAve9f_WOxYYDoTHflPALjXxgrMg/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC50/ZzZUWkpzamZVR0o3/dmlTc2JYQ0JRSGFI/YSZwaWQ9QXBp" />
+              <img
+                src="https://imgs.search.brave.com/J0Qf01tOs4e_SLcUAve9f_WOxYYDoTHflPALjXxgrMg/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC50/ZzZUWkpzamZVR0o3/dmlTc2JYQ0JRSGFI/YSZwaWQ9QXBp"
+              />
               <span class="nav-item">{{username}}</span>
             </a>
           </li>
+          
           <li>
             <a href="#">
               <i class="fas fa-menorah"></i>
@@ -53,15 +61,17 @@
             </a>
           </li>
           <li>
-            {% block link %} 
-            <a href="{{url_for('views.roomands')}}"> 
-            {% endblock %}
+            {% block link %}
+            <a href="{{url_for('views.roomands')}}">
+              {% endblock %}
               <i class="fas fa-comment"></i>
               <span class="nav-item">Queries</span>
-            </a> 
+            </a>
           </li>
           <li>
-            {% block link1 %} <a href="{{url_for('views.rent')}}"> {% endblock %}
+            {% block link1 %}
+            <a href="{{url_for('views.rent')}}">
+              {% endblock %}
               <i class="fas fa-database"></i>
               <span class="nav-item">Rent</span>
             </a>
@@ -70,16 +80,19 @@
             <a href="#">
               <i class="fas fa-cog"></i>
               <span class="nav-item">
-                <button onclick="myFunction()">Toggle light or <br> dark Mode</button>
+                <button onclick="myFunction()">
+                  Toggle light or <br />
+                  dark Mode
+                </button>
               </span>
             </a>
           </li>
           <script>
             function myFunction() {
-               var element = document.body;
-               element.classList.toggle("dark-mode");
+              var element = document.body;
+              element.classList.toggle("dark-mode");
             }
-            </script>
+          </script>
           <li>
             <a href="#" class="logout">
               <i class="fas fa-sign-out-alt"></i>
@@ -97,19 +110,24 @@
         <div class="users">
           <div class="card">
             <div class="col">
-              <img src="https://imgs.search.brave.com/J0Qf01tOs4e_SLcUAve9f_WOxYYDoTHflPALjXxgrMg/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC50/ZzZUWkpzamZVR0o3/dmlTc2JYQ0JRSGFI/YSZwaWQ9QXBp" />
+              <img
+                src="https://imgs.search.brave.com/J0Qf01tOs4e_SLcUAve9f_WOxYYDoTHflPALjXxgrMg/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC50/ZzZUWkpzamZVR0o3/dmlTc2JYQ0JRSGFI/YSZwaWQ9QXBp"
+              />
               <h4>{{username}}</h4>
             </div>
 
             <div class="col">
               Hostel : {{hostel}}
-              <br/>
+              <br />
             </div>
 
-            <div class="per">
-              <a href="{{url_for('auth.show_profile',username=username)}}" id="tocen">
-            Profile
-          </a>
+            <div class="profile">
+              <a
+                href="{{url_for('auth.show_profile',username=username)}}"
+                id="tocen"
+              >
+                Profile
+              </a>
             </div>
           </div>
         </div>
@@ -133,7 +151,7 @@
                   <td>{{order.type}}</td>
                   <td>{{order.day}}</td>
                   <td><button>View</button></td>
-                </tr>    
+                </tr>
                 {% endfor %}
               </tbody>
             </table>
