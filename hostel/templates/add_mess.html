@@ -57,9 +57,11 @@
         </tr>
         {% for ord in orders %}
         <tr>
+            {% if ord.food != " " %}
             <td id="td1">{{ord.food}}</td>
             <td id="td1">{{ord.type}}</td>
             <td id="td1">{{ord.day}}</td>
+            {% endif %}
         </tr>
         {% endfor %}
     </table>
