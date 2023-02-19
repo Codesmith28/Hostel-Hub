@@ -46,3 +46,7 @@ def rent():
 @views.route('/messageforwardem')
 def message_for_warden():
     return render_template('message_for_warden.html')
+
+@views.route('/search_hostellite')
+def search():
+    return render_template('search.html')

@@ -48,7 +48,7 @@ def create_app():
     app.register_blueprint(views,url_prefix='/')
     app.register_blueprint(auth,url_prefix='/')
 
-    from .models import User,hostellite,message
+    from .models import User,hostellite,message,mess
     with app.app_context():
         db.create_all()
         hostellite_db.create_all()

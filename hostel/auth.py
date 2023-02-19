@@ -155,3 +155,14 @@ def read_messages():
 def show_profile(username):
     user_detail = hostellite.query.filter_by(username=username).first()
     return render_template('profile_user.html',  user=user_detail)
+
+@auth.route('/search_hostellites',methods=['GET','POST'])
+def search():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        hostel = request.form.get('hostel')
+        details = hostellite.query.filter_by(username = name , hostel = hostel).all()
+        return render_template('search.html',info= details)
+    else:
+        return render_template('search.html')
+

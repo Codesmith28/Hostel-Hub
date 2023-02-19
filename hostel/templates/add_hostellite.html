@@ -126,10 +126,12 @@
       </tr>
       {% for content in datas %}
       <tr>
+        {% if content.username %}
         <td>{{content.username}}</td>
         <td>{{content.hostel}}</td>
         <td>{{content.room}}</td>
         <td>{{content.floor}}</td>
+        {% endif %}
       </tr>
       {% endfor %}
     </table>

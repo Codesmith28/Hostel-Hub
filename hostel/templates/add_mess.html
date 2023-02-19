@@ -115,24 +115,6 @@
 
       <div class="sub"><input type="submit" value="ADD" /> <br /></div>
     </form>
-<<<<<<< HEAD
-    <table align="center"> <br> <br>
-        <caption>Summary</caption> <br> <br>
-        <tr>
-            <th id="td1">Food</th>
-            <th id="td1">Type</th>
-            <th id="td1">Day</th>
-        </tr>
-        {% for ord in orders %}
-        <tr>
-            {% if ord.food != " " %}
-            <td id="td1">{{ord.food}}</td>
-            <td id="td1">{{ord.type}}</td>
-            <td id="td1">{{ord.day}}</td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-=======
     <table align="center" id="tab">
       <br />
       <br />
@@ -148,12 +130,13 @@
       </tr>
       {% for ord in orders %}
       <tr>
+        {% if ord.food %}
         <td id="td1">{{ord.food}}</td>
         <td id="td1">{{ord.type}}</td>
         <td id="td1">{{ord.day}}</td>
+        {% endif %}
       </tr>
       {% endfor %}
->>>>>>> 6a2ac441bf8f3f1619bce909d60f9a0499427dee
     </table>
   </body>
 </html>
