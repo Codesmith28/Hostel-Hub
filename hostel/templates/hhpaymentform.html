@@ -7,11 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Payment form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Phudu:wght@600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="static\pay.css" />
     <style>
       body {
         text-align: center;
-
+        font-family: Phudu, cursive;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -30,8 +34,36 @@
 
       .add_file {
         font-size: 30px;
-        font-family: 'Times New Roman', Times, serif;
         cursor: pointer;
+      }
+
+      /* increase the font size in input box */
+      input[type="text"],
+      input[type="email"] {
+        font-family: phudu, cursive;
+        font-size: 20px;
+      }
+
+      /* modify the pay button and add a hover effect */
+      input[type="submit"] {
+        background-color: rgb(0, 81, 255);
+        color: white;
+        font-size: 20px;
+        font-family: phudu, cursive;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+      /* make choose file button larger */
+      input[type="file"] {
+        font-size: 20px;
+        font-family: phudu, cursive;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.5s;
+        margin-left: 50px;
       }
     </style>
   </head>
@@ -40,23 +72,25 @@
       <form>
         <h1 class="d">PAYMENT</h1>
         <p>Name: <input type="text" name="name" required /></p>
-        
+
         <!-- section to add room number -->
         <p>Room number: <input type="text" name="room" required /></p>
-        
+
         <p>Phone number: <input type="text" name="phone" required /></p>
 
         <p>Email: <input type="email" name="email" id="" required /></p>
         <h2 class="e">PAYMENT INFORMATION</h2>
 
         <!-- add a qr code image below-->
-        <img src="static\qr.png" alt="" /> <br> <br>
+        <img src="static\qr.png" alt="" /> <br />
+        <br />
 
         <div class="add_file">
-        <p>
-         <u> Attach the screenshot of your payment :</u> <input type="file" id="add_file" required>
-        </p>
-      </div>
+          <p>
+            <u> Attach the screenshot of your payment :</u>
+            <input type="file" id="add_file" required />
+          </p>
+        </div>
         <p>
           <input type="submit" value="Pay" />
         </p>
