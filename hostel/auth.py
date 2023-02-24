@@ -154,13 +154,17 @@ def read_messages():
         return render_template('message_for_warden.html')
 
 
-@auth.route('/search_hostellites',methods=['GET','POST'])
+@auth.route('/search_hostellites', methods=['GET','POST'])
 def search():
+    if request.method == 'POST':
         name = request.form.get('name')
         hostel = request.form.get('hostel')
-        details = hostellite.query.filter_by(username = name , hostel = hostel).first()
-        add_details = info.query.filter_by(name= name).order_by(info.id.desc()).first()
-        return render_template('search.html',info= details,more_info = add_details)
+        details = hostellite.query.filter_by(username=name, hostel=hostel).first()
+        add_details = info.query.filter_by(name=name).order_by(info.id.desc()).first()
+        return render_template('search.html', info=details, more_info=add_details)
+    else:
+        return render_template('search.html', info=None,more_info = None)
+
 
 @auth.route('/show_profile/<username>', methods=['GET', 'POST'])
 def show_profile(username):
