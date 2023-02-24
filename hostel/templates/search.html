@@ -1,77 +1,120 @@
+<!-- @format -->
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search other hostellites</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Phudu:wght@600&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-        body{
-            background:azure
-        }
-        .main{
-            text-align: center;
-            font-size: 50px;
-        }
-        img{
-            width: 90px;
-        }
-        .block{
-            text-align: center;
-            max-width: 50%;
-            margin-top: 100px;
-            margin-left: 350px;
-            display: flex;
-            justify-content: center;
-            border: 4px solid blue;
-            border-radius: 14px;
-        }
-        .in{
-            margin-top: 15px;
-            margin-bottom: 35px;
-        }
-        input{
-            margin-top: 15px;
-            margin-bottom: 35px;
-            height: 20px;
-            font-size: 20px;
-        }
-        h1{
-            text-align: center;
-        }
-        input[id="search"]{
-            height: 40px;
-            width: 75px;
-        }
-        .det{
-            text-align: center;
-            font-size: 25px;
-        }
+      body {
+        background: azure;
+        font-family: Phudu, cursive;
+      }
+      .main {
+        text-align: center;
+        font-size: 50px;
+      }
+      img {
+        width: 90px;
+      }
+      .block {
+        text-align: center;
+        max-width: 50%;
+        margin-top: 100px;
+        margin-left: 25%;
+        display: flex;
+        justify-content: center;
+        border: 4px solid blue;
+        border-radius: 14px;
+        
+      }
+      .in {
+        margin-top: 15px;
+        margin-bottom: 35px;
+      }
+      input {
+        margin-top: 15px;
+        margin-bottom: 35px;
+        height: 20px;
+        font-size: 15px;
+        text-align: center;
+        font-family: Phudu, cursive;
+        cursor: beam;
+      }
+
+      form {
+        font-size: 20px;
+        margin-bottom: -50px;
+        width: 100%;
+      }
+      h1 {
+        text-align: center;
+      }
+      input[id="search"] {
+        height: 40px;
+        width: 75px;
+        cursor: pointer;
+        border-radius: 10px;
+        border: 3px solid blue;
+        
+      }
+
+      input[id="search"]:hover {
+        background-color: blue;
+        color: white;
+        border: 3px solid blue;
+      }
+
+      .det {
+        text-align: center;
+        font-size: 25px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="main">
-    <img src="https://th.bing.com/th?id=OIP.QNAx0aIErXUYCygJ9RjohgHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="for_search">Search Hostellite
-</div>
-<div class="block">
-    <div class="in">
-    <form action="{{url_for('auth.search')}}" method="post" >
-        Name: <input type="text" name="name"> <br>
-        Hostel Name : <input type="text" name="hostel"> <br>
-        <input type="submit" value="Search" id="search">
-    </form>
-</div>
-</div>
-<h1>Details</h1>
-<div class="det">
-    {% for infos in info %}
-    {% if infos.username %}
-    Name : {{infos.username}} <br>
-    Hostel : {{infos.hostel}} <br>
-    Floor : {{infos.floor}} <br>
-    Room : {{infos.room}} <br>
-    {% endif %}
-    {% endfor %}
-</div>
-</body>
+      <a>
+        <i class="fas fa-search"></i>
+        <span class="nav-item"><b>Search Hostellites</b></span>
+      </a>
+    </div>
+    <div class="block">
+      <div class="in">
+        <form action="{{url_for('auth.search')}}" method="post">
+          Name: <br />
+          <input type="text" name="name" placeholder="Enter your fullname" />
+          <br />
+          Hostel Name :<br />
+          <input
+            type="text"
+            name="hostel"
+            placeholder="Enter your hostel name"
+          />
+          <br />
+          <input type="submit" value="Search" id="search" />
+        </form>
+      </div>
+    </div>
+    <h1>Details</h1>
+    <div class="det">
+      {% for infos in info %} {% if infos.username %} Name : {{infos.username}}
+      <br />
+      Hostel : {{infos.hostel}} <br />
+      Floor : {{infos.floor}} <br />
+      Room : {{infos.room}} <br />
+      {% endif %} {% endfor %}
+    </div>
+  </body>
 </html>
