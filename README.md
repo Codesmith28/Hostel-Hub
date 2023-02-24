@@ -29,3 +29,8 @@ Course CSE100 project <br>
       rel="stylesheet"
     />
 <br>to use: font-family: "Phudu", cursive;
+
+
+<br><br>
+<b>For dark mode functionality:<b>
+<br>Download the following chrome extension : https://chrome.google.com/webstore/detail/dark-reader/eimadpbcbfnmbkopoojfekhnkhdbieeh
