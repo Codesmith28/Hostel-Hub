@@ -1,8 +1,11 @@
 <!-- @format -->
 
 {% extends 'dashboard_hostellite.html' %} {% block title %}
-<title>Warden dashboard</title> {% endblock %} 
-{% block link %}<a href="{{url_for('views.message_for_warden')}}"> {% endblock %} </a>
+<title>Warden dashboard</title> {% endblock %} {% block link %}<a
+  href="{{url_for('views.message_for_warden')}}"
+>
+  {% endblock %}
+</a>
 {% block content %}
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,6 +16,9 @@
 />
 
 <style>
+  body {
+    font-family: "Phudu", cursive;
+  }
   .ql {
     font-family: "Phudu", cursive;
     text-align: center;
@@ -35,9 +41,11 @@
     border-radius: 10px;
     margin: 10px;
     transition: border 0.1s linear;
+    font-family: "Phudu", cursive;
   }
 
   .links > a:hover {
+    font-family: "Phudu", cursive;
     color: teal;
     border: 5px teal solid;
   }

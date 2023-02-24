@@ -22,17 +22,27 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <style>
+      a,
       a[id="mode"] {
         cursor: pointer;
+        font-family: "Phudu", cursive;
+        text-align: left;
+        justify-content: left;
+      }
+
+      b {
+        font-family: Phudu, cursive;
       }
       tbody {
         color: teal;
+        font-family: Phudu, cursive;
       }
       /* customize the profile button */
       #tocen {
         background-color: teal;
         color: white;
         font-size: 16px;
+        font-family: Phudu, cursive;
         cursor: pointer;
         border-radius: 15px;
         border: 3px solid teal;
@@ -50,6 +60,13 @@
         border: 3px solid teal;
       }
 
+      div.profile{
+        text-align: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+      }
+
       .dark-mode {
         background-color: black;
         color: white;
@@ -58,15 +75,23 @@
         text-align: center;
       }
 
+      h4,
+      div.col {
+        font-family: Phudu, cursive;
+        font-size: 20px;
+        /* move it to the right */
+        text-align: center;
+      }
+
       /* align the table properly */
       table,
       th,
       td {
+        font-family: Phudu, cursive;
         border-collapse: collapse;
         padding: 10px;
         text-align: center;
       }
-
     </style>
   </head>
   <body>
@@ -115,7 +140,9 @@
           <li>
             <a onclick="myFunction()">
               <i class="fas fa-moon"></i>
-              <span class="nav-item">Dark/Light</span>
+              <span class="nav-item"
+                >Dark/Light <br />Press : alt + shift + D
+              </span>
             </a>
           </li>
           <script>

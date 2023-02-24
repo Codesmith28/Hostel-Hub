@@ -4,7 +4,10 @@
  * @format
  */
 
+
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -16,6 +19,7 @@
 }
 body {
   background: rgb(226, 226, 226);
+  font-family: Phudu, cursive;
 }
 nav {
   position: sticky;
@@ -28,6 +32,7 @@ nav {
   background: #fff;
   overflow: hidden;
   transition: 1s;
+  font-family: Phudu,cursive;
 }
 nav:hover {
   width: 280px;
@@ -75,6 +80,7 @@ nav .fas {
 a:hover {
   background: #eee;
   cursor: pointer;
+  font-family: Phudu, cursive;
 }
 a:hover i {
   color: teal;
