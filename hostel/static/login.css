@@ -147,4 +147,6 @@ select[id="hostel_name"]{
 .alert-danger hr{border-top-color:#f1b0b7}.alert-danger .alert-link{color:#491217}
 .alert-light{color:#818182;background-color:#fefefe;border-color:#fdfdfe}
 .alert-light hr{border-top-color:#ececf6}.alert-light .alert-link{color:#686868}
-.alert-dark{color:#1b1e21;background-color:#d6d8d9;border-color:#c6c8ca}
+.alert-dark{color:#1b1e21;background-color:rgb(59, 177, 59);border-color:#c6c8ca}
+.alert-success{background-color:rgb(59, 177, 59);background-color:rgb(59, 177, 59);border-color:rgb(59, 177, 59)}
+.alert-success hr{border-top-color:rgb(59, 177, 59)}.alert-danger .alert-link{color:green}

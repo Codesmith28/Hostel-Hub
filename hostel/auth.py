@@ -62,7 +62,7 @@ def signup():
             db.session.add(new_user)
             db.session.commit()
             redirect(url_for('views.home'))
-            flash('Account created. Now please redirect to login page to access your account ',category='error')
+            flash('Account created. Now please redirect to login page to access your account ',category='success')
 
     return render_template("warden_register.html")
 
@@ -79,6 +79,7 @@ def add_info():
             hostellite_db.session.add(new_entry)
             hostellite_db.session.commit()
             data = hostellite.query.order_by(hostellite.username).all()
+            flash("Database of "+new_name+" created",category='success')
             return render_template('add_hostellite.html', datas=data)
         except:
             flash("There was problem in accessing databse",category='error')
@@ -137,6 +138,7 @@ def send_message():
         try:
             message_db.session.add(to_add)
             message_db.session.commit()
+            flash("Message sent",category='success')
             return render_template('RoomandServices.html')
         except:
             flash("There was problem sending your message",category='error')
@@ -163,6 +165,7 @@ def search():
         add_details = info.query.filter_by(name=name).order_by(info.id.desc()).first()
         return render_template('search.html', info=details, more_info=add_details)
     else:
+        flash("No hostellite of given name was found in our database",category='error')
         return render_template('search.html', info=None,more_info = None)
 
 
@@ -187,4 +190,3 @@ def show_profile(username):
         except:
             flash("Couldn't excess database",category='error')
             return render_template('profile_user.html')
-
