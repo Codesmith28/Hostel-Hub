@@ -1,11 +1,12 @@
 from flask import Blueprint,render_template,request,flash,redirect,url_for
-from .models import User,hostellite,mess,message
+from .models import User,hostellite,mess,message,info
 from werkzeug.security import generate_password_hash,check_password_hash
 from . import db
 from flask_login import login_user , login_required , logout_user , current_user
 from . import hostellite_db
 from . import mess_db
 from . import message_db
+from . import info_db
 
 auth = Blueprint('auth',__name__)
 
@@ -114,7 +115,8 @@ def hostellite_login():
         hostel_exists_h = hostellite.query.filter_by(hostel=hostel_h).first()
         if hostel_exists_h:
             if user_h:               
-                order = mess.query.order_by(mess.day).all()   
+                order = mess.query.order_by(mess.day).all() 
+                print(username_h,'logged in !!')  
                 return render_template('dashboard_hostellite.html',hostel = hostel_h,username=username_h,orders= order)
             else:
                 flash("Username does\'nt exists please contact your hostel authoraties to create your account",category='error')
@@ -151,18 +153,37 @@ def read_messages():
     else:
         return render_template('message_for_warden.html')
 
-@auth.route('/show_profile/<username>', methods=['GET', 'POST'])
-def show_profile(username):
-    user_detail = hostellite.query.filter_by(username=username).first()
-    return render_template('profile_user.html',  user=user_detail)
 
 @auth.route('/search_hostellites',methods=['GET','POST'])
 def search():
     if request.method == 'POST':
         name = request.form.get('name')
         hostel = request.form.get('hostel')
-        details = hostellite.query.filter_by(username = name , hostel = hostel).all()
-        return render_template('search.html',info= details)
+        details = hostellite.query.filter_by(username = name , hostel = hostel).first()
+        add_details = info.query.filter_by(name= name).order_by(info.id.desc()).first()
+        return render_template('search.html',info= details,more_info = add_details)
     else:
         return render_template('search.html')
+
+@auth.route('/show_profile/<username>', methods=['GET', 'POST'])
+def show_profile(username):
+    if request.method == 'GET':
+        user_detail = hostellite.query.filter_by(username=username).first()
+        data = info.query.filter_by(name=username).order_by(info.id.desc()).first()
+        return render_template('profile_user.html',  user=user_detail,datas=data)
+    else:
+        clg = request.form.get('college')
+        stream = request.form.get('stream')
+        name = request.form.get('name')
+        phone = request.form.get('phone')
+        infos = info(name=name,college=clg,stream=stream,phone=phone)
+        try:
+            info_db.session.add(infos)
+            info_db.session.commit()
+            user_detail = hostellite.query.filter_by(username=username).first()
+            data = info.query.filter_by(name=username).order_by(info.id.desc()).first()
+            return render_template('profile_user.html',  user=user_detail,datas = data)
+        except:
+            flash("Couldn't excess database",category='error')
+            return render_template('profile_user.html')
 

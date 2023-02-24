@@ -2,6 +2,7 @@ from . import db
 from . import hostellite_db
 from . import mess_db
 from . import message_db
+from . import info_db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from datetime import datetime
@@ -32,3 +33,10 @@ class message(message_db.Model , UserMixin):
     username = message_db.Column(message_db.String(60))
     subject = message_db.Column(message_db.String(120))
     info = message_db.Column(message_db.String(200))
+
+class info(info_db.Model,UserMixin):
+    id = info_db.Column(info_db.Integer,primary_key = True)
+    name = info_db.Column(info_db.String(50))
+    college = info_db.Column(info_db.String(50))
+    stream = info_db.Column(info_db.String(10))
+    phone= info_db.Column(info_db.String(15))

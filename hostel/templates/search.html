@@ -64,14 +64,17 @@
 </div>
 <h1>Details</h1>
 <div class="det">
-    {% for infos in info %}
-    {% if infos.username %}
-    Name : {{infos.username}} <br>
-    Hostel : {{infos.hostel}} <br>
-    Floor : {{infos.floor}} <br>
-    Room : {{infos.room}} <br>
+    {% if info.username %}
+    Name : {{info.username}} <br>
+    Hostel : {{info.hostel}} <br>
+    Floor : {{info.floor}} <br>
+    Room : {{info.room}} <br>
     {% endif %}
-    {% endfor %}
+   {% if more_info.college %} <br>
+   College: {{more_info.college}}  <br>
+   Stream: {{more_info.stream}}   <br>
+   Phone Number: {{more_info.phone}} <br>
+   {% endif %}
 </div>
 </body>
 </html>

@@ -22,11 +22,11 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
     <style>
-      a[id="mode"]{
+      a[id="mode"] {
         cursor: pointer;
       }
-      tbody{
-        color:aqua;
+      tbody {
+        color: teal;
       }
       /* customize the profile button */
       #tocen {
@@ -42,7 +42,6 @@
         width: 100px;
         margin-top: 15px;
         transition: 0.1s;
-
       }
       /* hover setting */
       #tocen:hover {
@@ -58,6 +57,16 @@
       h1 {
         text-align: center;
       }
+
+      /* align the table properly */
+      table,
+      th,
+      td {
+        border-collapse: collapse;
+        padding: 10px;
+        text-align: center;
+      }
+
     </style>
   </head>
   <body>
@@ -85,7 +94,7 @@
               {% endblock %}
               <i class="fas fa-comment"></i>
               <span class="nav-item"><b>Queries</b></span>
-            </a> 
+            </a>
           </li>
           <li>
             {% block link1 %}
@@ -98,9 +107,9 @@
           {% block link2 %}
           <li>
             <a href="{{url_for('views.search')}}">
-            <i class="fas fa-search"></i>
-            <span class="nav-item"><b>Find fellow hostellites</b></span>
-          </a>
+              <i class="fas fa-search"></i>
+              <span class="nav-item"><b>Find fellow hostellites</b></span>
+            </a>
           </li>
           {% endblock %}
           <li>
@@ -163,7 +172,7 @@
                   <th>Food</th>
                   <th>type</th>
                   <th>Day</th>
-                  <th>Details</th>
+                  <!-- <th>Details</th> -->
                 </tr>
               </thead>
               <tbody>
@@ -173,7 +182,7 @@
                   <td>{{order.food}}</td>
                   <td>{{order.type}}</td>
                   <td>{{order.day}}</td>
-                  <td><button>View</button></td>
+                  <!-- <td><button>View</button></td> -->
                   {% endif %}
                 </tr>
                 {% endfor %}
