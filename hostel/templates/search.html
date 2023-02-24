@@ -16,7 +16,6 @@
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Phudu:wght@600&display=swap"
       rel="stylesheet"
     />
-
     <style>
       body {
         background: azure;
@@ -93,28 +92,31 @@
     <div class="block">
       <div class="in">
         <form action="{{url_for('auth.search')}}" method="post">
-          Name: <br />
-          <input type="text" name="name" placeholder="Enter your fullname" />
-          <br />
-          Hostel Name :<br />
+          Name: <br >
+          <input type="text" name="name">
+          <br >
+          Hostel Name :<br >
           <input
             type="text"
-            name="hostel"
-            placeholder="Enter your hostel name"
-          />
-          <br />
+            name="hostel">
+          <br>
           <input type="submit" value="Search" id="search" />
         </form>
       </div>
     </div>
     <h1>Details</h1>
     <div class="det">
-      {% for infos in info %} {% if infos.username %} Name : {{infos.username}}
-      <br />
-      Hostel : {{infos.hostel}} <br />
-      Floor : {{infos.floor}} <br />
-      Room : {{infos.room}} <br />
-      {% endif %} {% endfor %}
+      {% if info.username %}
+    Name : {{info.username}} <br>
+    Hostel : {{info.hostel}} <br>
+    Floor : {{info.floor}} <br>
+    Room : {{info.room}} <br>
+    {% endif %}
+      {% if more_info.college %} <br>
+   College: {{more_info.college}}  <br>
+   Stream: {{more_info.stream}}   <br>
+   Phone Number: {{more_info.phone}} <br>
+   {% endif %}
     </div>
   </body>
 </html>

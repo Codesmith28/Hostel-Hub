@@ -14,6 +14,17 @@
       margin-left: 380px;
       margin-top: 150px;
     }
+    .to_cen{
+      font-size: 30px;
+      text-align: center;
+    }
+    .add{
+      margin-top: 50px;
+      text-align: center;
+    }
+    input{
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -23,8 +34,23 @@
     Name : {{user.username}} <br> 
     Hostel: {{user.hostel}} <br>
     Floor : {{user.floor}} <br>
-    Room Number : {{user.room}}
+    Room Number : {{user.room}} <br>
+    {% if datas.college %}
+    College : {{datas.college}} <br>
+    Stream : {{datas.stream}} <br>
+    Phone number : {{datas.phone}}
+    {% endif %}
     </div>
+  </div>
+  <div class="add">
+    <form action="{{url_for('auth.show_profile',username=user.username)}}" method="post">
+     <div class="to_cen"> Please Add/Update other Details</div>
+      <input type="text" name="name" id="name" value="{{user.username}}" hidden>
+      College name:<input type="text" name="college" id="college"> <br>
+      Your Stream: <input type="text" name="stream" id="stream"> <br>
+      Phone Number: <input type="text" name="phone" id="phone"> <br>
+      <input type="submit" name="sub" id="sub">
+    </form>
   </div>
 </body>
 </html>
