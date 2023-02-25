@@ -155,20 +155,20 @@ def read_messages():
         return render_template('message_for_warden.html')
 
 
-@auth.route('/search_hostellites/<name_user>/<hostel>', methods=['GET','POST'])
-def search(name_user,hostel):
+@auth.route('/search_hostellites/<username>/<hostel>', methods=['GET','POST'])
+def search(username,hostel):
     if request.method == 'POST':
         name = request.form.get('name')
         hoste = request.form.get('hostel')
         details = hostellite.query.filter_by(username=name, hostel=hoste).first()
         add_details = info.query.filter_by(name=name).order_by(info.id.desc()).first()
         if(details):
-            return render_template('search.html', info=details, more_info=add_details,name_user=name_user,hostel=hostel)
+            return render_template('search.html', info=details, more_info=add_details,username=username,hostel=hostel)
         else:
             flash("We couldn/'t find the name of given user in our database",category='error')
-            return render_template('search.html',info=None, more_info=None,name_user=name_user,hostel=hostel)
+            return render_template('search.html',info=None, more_info=None,username=username,hostel=hostel)
     else:
-        return render_template('search.html', info=None,more_info = None,name_user=name_user,hostel=hostel)
+        return render_template('search.html', info=None,more_info = None,username=username,hostel=hostel)
 
 
 @auth.route('/show_profile/<username>/<hostel>', methods=['GET', 'POST'])

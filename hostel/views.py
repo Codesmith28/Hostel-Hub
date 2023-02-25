@@ -50,10 +50,10 @@ def rent(username,hostel):
 def message_for_warden():
     return render_template('message_for_warden.html')
 
-@views.route('/search_hostellite/<name_user>/<hostel>')
-def search(name_user,hostel):
+@views.route('/search_hostellite/<username>/<hostel>')
+def search(username,hostel):
     order = mess.query.order_by(mess.day).all() 
-    return render_template('search.html',info=None,more_info = None,name_user=name_user,orders= order,hostel=hostel)
+    return render_template('search.html',info=None,more_info = None,username=username,orders= order,hostel=hostel)
 
 @views.route('/hostellite_dashboard/<username>/<hostel>')
 def hostellite_dashboard(username,hostel):
