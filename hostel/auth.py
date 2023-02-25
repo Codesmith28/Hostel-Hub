@@ -134,12 +134,11 @@ def send_message(username,hostel):
         subject = request.form.get('Subject')
         query = request.form.get('Query')
         to_add = message(username = name,subject=subject,info=query)
-
         try:
             message_db.session.add(to_add)
             message_db.session.commit()
             flash("Message sent",category='success')
-            return render_template('RoomandServices.html',username=username,hostel=hostel)
+            redirect(url_for('roomands',username=username,hostel=hostel))
         except:
             flash("There was problem sending your message",category='error')
             return render_template('RoomandServices.html',username=username,hostel=hostel)
@@ -172,12 +171,12 @@ def search(username,hostel):
         return render_template('search.html', info=None,more_info = None,username=username,hostel=hostel)
 
 
-@auth.route('/show_profile/<username>', methods=['GET', 'POST'])
-def show_profile(username):
+@auth.route('/show_profile/<username>/<hostel>', methods=['GET', 'POST'])
+def show_profile(username,hostel):
     if request.method == 'GET':
         user_detail = hostellite.query.filter_by(username=username).first()
         data = info.query.filter_by(name=username).order_by(info.id.desc()).first()
-        return render_template('profile_user.html',  user=user_detail,datas=data)
+        return render_template('profile_user.html',  user=user_detail,datas=data,username=username,hostel=hostel)
     else:
         clg = request.form.get('college')
         stream = request.form.get('stream')
@@ -189,7 +188,7 @@ def show_profile(username):
             info_db.session.commit()
             user_detail = hostellite.query.filter_by(username=username).first()
             data = info.query.filter_by(name=username).order_by(info.id.desc()).first()
-            return render_template('profile_user.html',  user=user_detail,datas = data)
+            return render_template('profile_user.html',  user=user_detail,datas = data,username=username,hostel=hostel)
         except:
             flash("Couldn't excess database",category='error')
-            return render_template('profile_user.html')
+            return render_template('profile_user.html',username=username,hostel=hostel)
