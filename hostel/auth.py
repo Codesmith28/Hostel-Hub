@@ -127,24 +127,24 @@ def hostellite_login():
             return render_template('login.html')
     return render_template('login.html')
 
-@auth.route('/send_message',methods=['GET','POST'])
-def send_message():
+@auth.route('/send_message/<username>/<hostel>',methods=['GET','POST'])
+def send_message(username,hostel):
     if request.method == 'POST':
-        username = request.form.get('username')
+        name = request.form.get('username')
         subject = request.form.get('Subject')
         query = request.form.get('Query')
-        to_add = message(username = username,subject=subject,info=query)
+        to_add = message(username = name,subject=subject,info=query)
 
         try:
             message_db.session.add(to_add)
             message_db.session.commit()
             flash("Message sent",category='success')
-            return render_template('RoomandServices.html')
+            return render_template('RoomandServices.html',username=username,hostel=hostel)
         except:
             flash("There was problem sending your message",category='error')
-            return render_template('RoomandServices.html')
+            return render_template('RoomandServices.html',username=username,hostel=hostel)
     else:
-        return render_template('RoomandServices.html')
+        return render_template('RoomandServices.html',username=username,hostel=hostel)
 
 
 @auth.route('/get_message',methods=['GET','POST'])
@@ -156,17 +156,20 @@ def read_messages():
         return render_template('message_for_warden.html')
 
 
-@auth.route('/search_hostellites', methods=['GET','POST'])
-def search():
+@auth.route('/search_hostellites/<username>/<hostel>', methods=['GET','POST'])
+def search(username,hostel):
     if request.method == 'POST':
         name = request.form.get('name')
         hostel = request.form.get('hostel')
         details = hostellite.query.filter_by(username=name, hostel=hostel).first()
         add_details = info.query.filter_by(name=name).order_by(info.id.desc()).first()
-        return render_template('search.html', info=details, more_info=add_details)
+        if(details):
+            return render_template('search.html', info=details, more_info=add_details,username=username,hostel=hostel)
+        else:
+            flash("We couldn/'t find the name of given user in our database",category='error')
+            return render_template('search.html',info=None, more_info=None,username=username,hostel=hostel)
     else:
-        flash("No hostellite of given name was found in our database",category='error')
-        return render_template('search.html', info=None,more_info = None)
+        return render_template('search.html', info=None,more_info = None,username=username,hostel=hostel)
 
 
 @auth.route('/show_profile/<username>', methods=['GET', 'POST'])

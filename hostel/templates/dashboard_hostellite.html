@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+  {% block head %}
   <head>
     <meta charset="UTF-8" />
     {% block title %}
@@ -94,6 +95,7 @@
       }
     </style>
   </head>
+  {% endblock %}
   <body>
     <div class="container">
       <nav>
@@ -108,14 +110,14 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="{{url_for('views.hostellite_dashboard',username=username,hostel=hostel)}}">
               <i class="fas fa-menorah"></i>
               <span class="nav-item"><b>Dashboard</b></span>
             </a>
           </li>
           <li>
             {% block link %}
-            <a href="{{url_for('views.roomands')}}">
+            <a href="{{url_for('views.roomands',username=username,hostel=hostel)}}">
               {% endblock %}
               <i class="fas fa-comment"></i>
               <span class="nav-item"><b>Queries</b></span>
@@ -123,7 +125,7 @@
           </li>
           <li>
             {% block link1 %}
-            <a href="{{url_for('views.rent')}}">
+            <a href="{{url_for('views.rent',username=username,hostel=hostel)}}">
               {% endblock %}
               <i class="fas fa-database"></i>
               <span class="nav-item"><b>Rent</b></span>
@@ -131,7 +133,7 @@
           </li>
           {% block link2 %}
           <li>
-            <a href="{{url_for('views.search')}}">
+            <a href="{{url_for('views.search',username=username,hostel=hostel)}}">
               <i class="fas fa-search"></i>
               <span class="nav-item"><b>Find fellow hostellites</b></span>
             </a>
@@ -152,17 +154,17 @@
             }
           </script>
           <li>
-            <a href="#" class="logout">
+            <a href="{{url_for('views.hostellitelogin')}}" class="logout">
               <i class="fas fa-sign-out-alt"></i>
               <span class="nav-item">Log out</span>
             </a>
           </li>
         </ul>
       </nav>
-
+      {% block user %}
       <section class="main">
         <div class="main-top">
-          <h1 align="center">Dashboard</h1>
+        {% block name %}  <h1 align="center">Dashboard</h1> {% endblock %}
           <i class="fas fa-user-cog"></i>
         </div>
         <div class="users">
@@ -181,7 +183,7 @@
 
             <div class="profile">
               <a
-                href="{{url_for('auth.show_profile',username=username)}}"
+                href="{{url_for('auth.show_profile',username=username,hostel=hostel)}}"
                 id="tocen"
               >
                 Profile
@@ -189,6 +191,7 @@
             </div>
           </div>
         </div>
+        {% endblock %}
         {% block content %}
         <section class="attendance">
           <div class="attendance-list">
