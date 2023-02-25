@@ -2,153 +2,143 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  {% block head %}
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   {% block title %} <title>Search other hostellites</title> {% endblock %}
-    <link
-      rel="stylesheet"
-      href="{{url_for('static',filename='dashboard_hostellite.css')}}"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    />
-    <style>
-      
-      body {
-        background: azure;
-        font-family: Phudu, cursive;
-      }
-      .main {
-        text-align: center;
-        font-size: 50px;
-       
-      }
-      img {
-        width: 90px;
-      }
-      .block {
-        text-align: center;
-        width: 1000px;
-        margin-left: -1600px;
-        height: fit-content;
-        margin-top: 100px;
-        display: flex;
-        justify-content: center;
-        border: 4px solid blue;
-        border-radius: 14px;
-      }
-      input {
-        position: relative;
-        background: #b8daff;
-        margin-top: 15px;
-        margin-bottom: 35px;
-        height: 20px;
-        font-size: 15px;
-        text-align: center;
-        font-family: Phudu, cursive;
-        cursor: beam;
-      }
+{% block head %}
 
-      form {
-        font-size: 20px;
-        margin-bottom: -50px;
-      }
-      h1 {
-        text-align: center;
-      }
-      input[id="search"] {
-        height: 40px;
-        width: 75px;
-        cursor: pointer;
-        border-radius: 10px;
-        border: 3px solid blue;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% block title %} <title>Search other hostellites</title> {% endblock %}
+  <link rel="stylesheet" href="{{url_for('static',filename='dashboard_hostellite.css')}}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <style>
+    body {
+      background: azure;
+      font-family: Phudu, cursive;
+    }
 
-      input[id="search"]:hover {
-        background-color: blue;
-        color: white;
-        border: 3px solid blue;
-        cursor: pointer;
-      }
+    .main {
+      text-align: center;
+      font-size: 50px;
 
-      .det {
-        margin-top: 500px;
-        margin-left: -660px;
-        text-align: center;
-        font-size: 25px;
-      }
-      .alert{position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem}
-.alert-heading{color:inherit}
-.alert-link{font-weight:700}
-.alert-dismissible{padding-right:4rem}
-.alert-dismissible .close{position:absolute;top:0;right:0;padding:.75rem 1.25rem;color:inherit}
-.close{position:absolute;top:0;right:0;padding:.75rem 1.25rem;color:inherit}
-.alert-primary{color:#004085;background-color:#cce5ff;border-color:#b8daff}
-.alert-primary hr{border-top-color:#9fcdff}.alert-primary .alert-link{color:#002752}
-.alert-secondary{color:#383d41;background-color:#e2e3e5;border-color:#d6d8db}
-.alert-secondary hr{border-top-color:#c8cbcf}
-.alert-secondary .alert-link{color:#202326}
-.alert-danger{color:#721c24;background-color:#f8d7da;border-color:#f5c6cb}
-.alert-danger hr{border-top-color:#f1b0b7}.alert-danger .alert-link{color:#491217}
-    </style>
-  </head>
+    }
+
+    img {
+      width: 90px;
+    }
+
+    .block {
+      text-align: center;
+      width: 1000px;
+      margin-left: -1600px;
+      height: fit-content;
+      margin-top: 100px;
+      display: flex;
+      justify-content: center;
+      border: 4px solid blue;
+      border-radius: 14px;
+    }
+
+    input {
+      position: relative;
+      background: #b8daff;
+      margin-top: 15px;
+      margin-bottom: 35px;
+      height: 20px;
+      font-size: 15px;
+      text-align: center;
+      font-family: Phudu, cursive;
+      cursor: beam;
+    }
+
+    form {
+      font-size: 20px;
+      margin-bottom: -50px;
+    }
+
+    h1 {
+      margin-left: 100px;
+      text-align: center;
+    }
+
+    input[id="search"] {
+      height: 40px;
+      width: 75px;
+      cursor: pointer;
+      border-radius: 10px;
+      border: 3px solid blue;
+    }
+
+    input[id="search"]:hover {
+      background-color: blue;
+      color: white;
+      border: 3px solid blue;
+      cursor: pointer;
+    }
+
+    .det {
+      margin-top: 500px;
+      margin-left: -660px;
+      text-align: center;
+      font-size: 25px;
+    }
+  </style>
+</head>
+{% endblock %}
+
+<body>
+  {% block name %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category,message in messages %}
+  {% if category=='error' %}
+  <div class="alert alert-danger alert-dismissable fade show" role='alert'>
+    {{ message }}
+  </div>
+  {% else %}
+  <div class="alert alert-success alert-dismissable fade show" role='alert'>
+    {{ message }}
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
   {% endblock %}
-  <body>
-    {% block name %}
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        {% for category,message in messages %}
-        {% if category=='error' %}
-        <div class="alert alert-danger alert-dismissable fade show" role='alert'>
-            {{ message }}
-        </div>
-        {% else %}
-        <div class="alert alert-success alert-dismissable fade show" role='alert'>
-            {{ message }}
-        </div>
-        {% endif %}
-        {% endfor %}
-        {%  endif %}
-        {% endwith %}
-        {% endblock %}
-        {% block user %}
-    <div class="main">
-      <a>
-        <i class="fas fa-search"></i>
-        <span class="nav-item" align="centre"><b>Search Hostellites</b></span>
-      </a>
-    </div>
-    <div class="block">
-        <form action="{{url_for('auth.search',username=username,hostel=hostel)}}" method="post">
-          Name: <br >
-          <input type="text" name="name">
-          <br >
-          Hostel Name :<br >
-          <input type="text" name="hostel">
-          <br>
-          <input type="submit" value="Search" id="search" />
-        </form>
-    </div>
-    {% endblock %}
-    {% block content %}
-    <div class="det">
-      <h1 align="center">Details</h1>
-      {% if info.username %}
+  {% block user %}
+  <div class="main">
+    <a>
+      <i class="fas fa-search"></i>
+      <span class="nav-item" align="centre"><b>Search Hostellites</b></span>
+    </a>
+  </div>
+  <div class="block">
+    <form action="{{url_for('auth.search',name_user=name_user,hostel=hostel)}}" method="post">
+      Name: <br>
+      <input type="text" name="name">
+      <br>
+      Hostel Name :<br>
+      <input type="text" name="hostel">
+      <br>
+      <input type="submit" value="Search" id="search" />
+    </form>
+  </div>
+  {% endblock %}
+  {% block content %}
+  <div class="det">
+    <h1 align="center">Details</h1>
+    {% if info.username %}
     Name : {{info.username}} <br>
     Hostel : {{info.hostel}} <br>
     Floor : {{info.floor}} <br>
     Room : {{info.room}} <br>
     {% endif %}
-      {% if more_info.college %} <br>
-   College: {{more_info.college}}  <br>
-   Stream: {{more_info.stream}}   <br>
-   Phone Number: {{more_info.phone}} <br>
-   {% endif %}
-    </div>
-    {% endblock %}
-  </body>
+    {% if more_info.college %} <br>
+    College: {{more_info.college}} <br>
+    Stream: {{more_info.stream}} <br>
+    Phone Number: {{more_info.phone}} <br>
+    {% endif %}
+  </div>
+  {% endblock %}
+</body>
+
 </html>
