@@ -1,5 +1,5 @@
 from flask import Blueprint,render_template,request,flash,redirect,url_for
-from .models import User,hostellite,mess,message,info
+from .models import User,hostellite,mess,message,info,infow
 from werkzeug.security import generate_password_hash,check_password_hash
 from . import db
 from flask_login import login_user , login_required , logout_user , current_user
@@ -7,6 +7,7 @@ from . import hostellite_db
 from . import mess_db
 from . import message_db
 from . import info_db
+from . import infow_db
 
 auth = Blueprint('auth',__name__)
 
@@ -79,7 +80,7 @@ def add_info():
             hostellite_db.session.add(new_entry)
             hostellite_db.session.commit()
             data = hostellite.query.order_by(hostellite.username).all()
-            flash("Database of "+new_name+" created",category='success')
+            flash("Database created",category='success')
             return render_template('add_hostellite.html', datas=data)
         except:
             flash("There was problem in accessing databse",category='error')
@@ -146,14 +147,11 @@ def send_message(username,hostel):
         return render_template('RoomandServices.html',username=username,hostel=hostel)
 
 
-@auth.route('/get_message',methods=['GET','POST'])
+@auth.route('/get_message')
 def read_messages():
-    if request.method == 'POST':
+    if request.method == 'GET':
         info = message.query.order_by(message.username).all()
         return render_template('message_for_warden.html',infos=info)
-    else:
-        return render_template('message_for_warden.html')
-
 
 @auth.route('/search_hostellites/<username>/<hostel>', methods=['GET','POST'])
 def search(username,hostel):
@@ -192,3 +190,24 @@ def show_profile(username,hostel):
         except:
             flash("Couldn't excess database",category='error')
             return render_template('profile_user.html',username=username,hostel=hostel)
+
+@auth.route('/warden_profile/<username>/<hostel>', methods=['GET', 'POST'])
+def warden_profile(username, hostel):
+    if request.method == 'GET':
+        user_detail = User.query.filter_by(username=username).first()
+        data = infow.query.filter_by(name=username).order_by(infow.id.desc()).first()
+        return render_template('warden_profile.html', user=user_detail, datas=data,username=username,hostel=hostel)
+    elif request.method == 'POST':
+        phone = request.form.get('phone')
+        add = request.form.get('add')
+        name = request.form.get('name')
+        infos = infow(name=name, add=add, phone=phone)
+        try:
+            infow_db.session.add(infos)
+            infow_db.session.commit()
+            user_detail = User.query.filter_by(username=username).first()
+            data = infow.query.filter_by(name=username).order_by(infow.id.desc()).first()
+            return render_template('warden_profile.html', user=user_detail, datas=data,username=username,hostel=hostel)
+        except:
+            flash("Couldn't access database", category='error')
+            return render_template('warden_profile.html.html', username=username, hostel=hostel)

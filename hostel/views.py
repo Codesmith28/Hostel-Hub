@@ -2,8 +2,9 @@
 from flask import Blueprint,render_template,request,redirect,url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_required,current_user
-from .models import User,hostellite
+from .models import User,hostellite,message
 from . import mess_db
+from . import message_db
 from .models import mess
 views = Blueprint('views',__name__)
 
@@ -46,10 +47,21 @@ def rent(username,hostel):
     order = mess.query.order_by(mess.day).all() 
     return render_template('hhpaymentform.html',username=username,orders= order,hostel=hostel)
 
-@views.route('/messageforwardem')
+@views.route('/messageforwardem', methods=['GET','POST'])
 def message_for_warden():
-    return render_template('message_for_warden.html')
-
+    if request.method == 'GET':
+        info = message.query.order_by(message.username).all()
+        return render_template('message_for_warden.html',infos=info)
+    elif request.method == 'POST':
+        message_id = request.form.get('message_id')
+        message_to_delete = message.query.filter_by(id=message_id).first()
+        try:
+            message_db.session.delete(message_to_delete)
+            message_db.session.commit()
+            return redirect(url_for('auth.read_messages'))
+        except:
+            return render_template('message_for_warden.html')
+    
 @views.route('/search_hostellite/<username>/<hostel>')
 def search(username,hostel):
     order = mess.query.order_by(mess.day).all() 

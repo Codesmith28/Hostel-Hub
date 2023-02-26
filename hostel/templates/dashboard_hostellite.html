@@ -67,11 +67,6 @@
         display: flex;
         justify-content: center;
       }
-
-      .dark-mode {
-        background-color: black;
-        color: white;
-      }
       h1 {
         text-align: center;
       }
@@ -126,11 +121,11 @@
           <li>
             {% block link1 %}
             <a href="{{url_for('views.rent',username=username,hostel=hostel)}}">
-              {% endblock %}
               <i class="fas fa-database"></i>
               <span class="nav-item"><b>Rent</b></span>
             </a>
           </li>
+          {% endblock %}
           {% block link2 %}
           <li>
             <a href="{{url_for('views.search',username=username,hostel=hostel)}}">
@@ -140,21 +135,7 @@
           </li>
           {% endblock %}
           <li>
-            <a onclick="myFunction()">
-              <i class="fas fa-moon"></i>
-              <span class="nav-item"
-                >Dark/Light <br />Press : alt + shift + D
-              </span>
-            </a>
-          </li>
-          <script>
-            function myFunction() {
-              var element = document.body;
-              element.classList.toggle("dark-mode");
-            }
-          </script>
-          <li>
-            <a href="{{url_for('views.hostellitelogin')}}" class="logout">
+            <a href="{{url_for('views.home')}}" class="logout">
               <i class="fas fa-sign-out-alt"></i>
               <span class="nav-item">Log out</span>
             </a>
@@ -180,17 +161,17 @@
               Hostel : {{hostel}}
               <br />
             </div>
-
+            {% block profile %}
             <div class="profile">
-              <a
-                href="{{url_for('auth.show_profile',username=username,hostel=hostel)}}"
-                id="tocen"
-              >
+                   <a
+                href="{{url_for('auth.show_profile',username=username,hostel=hostel)}}" 
+                id="tocen" >
                 Profile
               </a>
             </div>
           </div>
         </div>
+        {% endblock %}
         {% endblock %}
         {% block content %}
         <section class="attendance">
