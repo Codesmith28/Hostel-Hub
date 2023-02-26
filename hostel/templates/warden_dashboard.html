@@ -41,6 +41,14 @@
 </style>
 </head>
 {% endblock %}
+{% block dash %}
+<li>
+  <a href="#">
+    <i class="fas fa-menorah"></i>
+    <span class="nav-item"><b>Dashboard</b></span>
+  </a>
+</li>
+{% endblock %}
 {% block link %}
     <a href="{{url_for('views.message_for_warden')}}">
 {% endblock %}
