@@ -13,6 +13,9 @@
     />
 
     <style>
+      u{
+        color: blue;
+      }
       body {
         background: lightcyan;
         font-family: "Phudu", cursive;
@@ -25,15 +28,12 @@
       }
       .paid,
       .not_paid {
-        display: flex;
-        justify-content: center;
         align-items: center;
         border: 5px solid blue;
         border-radius: 10px;
-        font-size: 25px;
+        margin-top: 40px;
+        font-size: 20px;
         text-align: center;
-        max-width: 50%;
-        margin: 0 auto;
       }
 
       h1 {
@@ -41,7 +41,8 @@
         text-align: center;
       }
       img {
-        width: 900px;
+        margin-top: 20px;
+        width: 450px;
       }
     </style>
   </head>
@@ -49,11 +50,12 @@
     <h1>FEES PAID:</h1>
     {% for paid in fee_info %}
     <div class="paid">
-      From : {{paid.name}} <br />
-      Hostel : {{paid.hostel}} <br />
-      Rooom : {{paid.room}} <br />
-      Phone number : {{paid.phone}} <br />
-      Screenshot added: <br />
+      <u>From</u>
+       : {{paid.name}} <br />
+      <u>Hostel</u> : {{paid.hostel}} <br />
+    <u>Rooom</u> : {{paid.room}} <br />
+      <u>Phone number</u> : {{paid.phone}} <br />
+    <u>Screenshot added:</u> <br />
       {% if paid.file %}
       <img
         src="{{ url_for('uploaded_file', filename=paid.file) }}"
@@ -65,10 +67,11 @@
     <hr />
     <h1>NOT PAID:</h1>
     <div class="not_paid">
-      {% if np.username not in fee_info.name %} {% for not_paid in np %} Name :
+      {% if np.username not in fee_info.name %} {% for not_paid in np %} 
+      <u>Name :</u>
       {{not_paid.username }} <br />
-      Room : {{ not_paid.room }} <br />
-      Floor: {{ not_paid.floor }} <br />
+      <u>Room :</u> {{ not_paid.room }} <br />
+     <u>Floor: </u>{{ not_paid.floor }} <br />
       {% endfor %} {% endif %}
     </div>
   </body>
