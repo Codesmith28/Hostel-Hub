@@ -97,9 +97,42 @@
         color: rgb(0, 81, 255);
         background-color: white;
       }
+      .alert{position:relative;padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem}
+.alert-heading{color:inherit}
+.alert-link{font-weight:700}
+.alert-dismissible{padding-right:4rem}
+.alert-dismissible .close{position:absolute;top:0;right:0;padding:.75rem 1.25rem;color:inherit}
+.close{position:absolute;top:0;right:0;padding:.75rem 1.25rem;color:inherit}
+.alert-primary{color:#004085;background-color:#cce5ff;border-color:#b8daff}
+.alert-primary hr{border-top-color:#9fcdff}.alert-primary .alert-link{color:#002752}
+.alert-secondary{color:#383d41;background-color:#e2e3e5;border-color:#d6d8db}
+.alert-secondary hr{border-top-color:#c8cbcf}
+.alert-secondary .alert-link{color:#202326}
+.alert-danger{color:#721c24;background-color:#f8d7da;border-color:#f5c6cb}
+.alert-danger hr{border-top-color:#f1b0b7}.alert-danger .alert-link{color:#491217}
+.alert-light{color:#818182;background-color:#fefefe;border-color:#fdfdfe}
+.alert-light hr{border-top-color:#ececf6}.alert-light .alert-link{color:#686868}
+.alert-dark{color:#1b1e21;background-color:rgb(59, 177, 59);border-color:#c6c8ca}
+.alert-success{background-color:rgb(59, 177, 59);background-color:rgb(59, 177, 59);border-color:rgb(59, 177, 59)}
+.alert-success hr{border-top-color:rgb(59, 177, 59)}.alert-danger .alert-link{color:green}
     </style>
   </head>
   <body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category,message in messages %}
+        {% if category=='error' %}
+        <div class="alert alert-danger alert-dismissable fade show" role='alert'>
+            {{ message }}
+        </div>
+        {% else %}
+        <div class="alert alert-success alert-dismissable fade show" role='alert'>
+            {{ message }}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {%  endif %}
+        {% endwith %}
     <h1 align="center">Create Hostellite Account</h1>
     <form action="{{url_for('auth.add_info')}}" method="post">
       <label for="new_name">Name</label>

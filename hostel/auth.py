@@ -75,17 +75,17 @@ def add_info():
         new_room = request.form.get('new_room')
         new_hostel = request.form.get('hostel_name')
         new_entry = hostellite(username=new_name,hostel=new_hostel,room=new_room,floor=new_floor)
-
-        try:
+        to_check = hostellite.query.filter_by(username=new_name,hostel=new_hostel,room=new_room,floor=new_floor).first()
+        if(not(to_check)):
             hostellite_db.session.add(new_entry)
             hostellite_db.session.commit()
             data = hostellite.query.order_by(hostellite.username).all()
             flash("Database created",category='success')
             return render_template('add_hostellite.html', datas=data)
-        except:
-            flash("There was problem in accessing databse",category='error')
+        else:
+            flash("The given username already exists in the database !",category='error')
             return render_template('add_hostellite.html')
-    
+
     else:
         data = hostellite.query.order_by(hostellite.username).all()
         return render_template('add_hostellite.html',datas = data)
