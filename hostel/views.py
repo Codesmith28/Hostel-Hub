@@ -86,7 +86,7 @@ def message_for_warden():
 @views.route('/search_hostellite/<username>/<hostel>')
 def search(username,hostel):
     order = mess.query.order_by(mess.day).all() 
-    return render_template('search.html',info=None,more_info = None,username=username,orders= order,hostel=hostel)
+    return render_template('search.html',info=None,more_info = None,username=username,orders= order,hostel=hostel,nothing=True)
 
 @views.route('/hostellite_dashboard/<username>/<hostel>',methods=['GET'])
 def hostellite_dashboard(username,hostel):
