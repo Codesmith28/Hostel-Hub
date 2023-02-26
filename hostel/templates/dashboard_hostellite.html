@@ -103,13 +103,14 @@
               <span class="nav-item">{{username}}</span>
             </a>
           </li>
-
+          {% block dash %}
           <li>
             <a href="{{url_for('views.hostellite_dashboard',username=username,hostel=hostel)}}">
               <i class="fas fa-menorah"></i>
               <span class="nav-item"><b>Dashboard</b></span>
             </a>
           </li>
+          {% endblock %}
           <li>
             {% block link %}
             <a href="{{url_for('views.roomands',username=username,hostel=hostel)}}">
