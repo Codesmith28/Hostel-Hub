@@ -1,55 +1,63 @@
-<!-- @format -->
-
-{% extends 'RoomandServices.html' %} {% block form %} {% endblock %} {% block
-content %}
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Phudu:wght@600&display=swap"
-  rel="stylesheet"
-/>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <style>
   body {
+    background: aquamarine;
     font-family: "Phudu", cursive;
   }
   .blocks {
     font-family: "Phudu", cursive;
     border: 2px solid blue;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 10px;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    text-align: center;
   }
-  input[id="get"] {
-    color: white;
+  .blocks:hover{
+    margin-top: 25px;
+    border: 4px solid blue;
+    margin-bottom: 25px;
+  }
+  input[id="clear"]:hover {
+    background:blue;
+    border: 3px solid aqua;
+    margin-bottom: 5px;
+  }
+  h1{
+    text-align: center;
+    font-size: 60px;
+    font-family: "Phudu", cursive;
+    margin-bottom: 50px;
+  }
+  input[id="clear"]{
+    border: 3px solid blue;
+    background: aqua;
+    width: 80px;
+    margin-bottom: 10px;
     font-size: 16px;
     font-family: "Phudu", cursive;
     cursor: pointer;
-    border-radius: 15px;
-    border: 3px solid blue;
-    text-align: center;
-    align-items: center;
-    width: 100px;
+    border-radius: 12px;
     transition: 0.1s;
-    /* align the button with h1 */
-    margin-left: 50%;
     transform: translateX(-50%);
-    margin-top: -10px;
+    margin-left: 80px;
   }
-  input[id="get"]:hover {
-    background-color: turquoise;
-    color: teal;
-    border: 3px solid teal;
-  }
-  /* align the heading to the center */
 </style>
-<form action="{{url_for('auth.read_messages')}}" method="post">
-  <input align="center" type="submit" value="Get Queries" id="get" />
-</form>
-
+</head>
+<body>
+  <h1>QUERIES AND MESSAGES</h1>
 {% for content in infos %}
 <div class="blocks">
+  <form action="{{url_for('views.message_for_warden')}}" method="post">
+    <input type="text" name="message_id" value="{{content.id}}" hidden>
   <p>From : {{content.username}}</p>
   <p>Subject : {{content.subject}}</p>
   <p>Query : {{content.info }}</p>
+  <input type="submit" value = "clear" id="clear">
+</form>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %} 
+</body>
+</html>

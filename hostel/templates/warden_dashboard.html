@@ -1,51 +1,10 @@
-{% extends 'dashboard_hostellite.html' %} 
-{% block title %}
-<title>Warden dashboard</title> {% endblock %} {% block link %}<a
-  href="{{url_for('views.message_for_warden')}}"
->
-  {% endblock %}
-</a>
-{% block name %}  <h1 align="center">Dashboard</h1> {% endblock %}
-{% block user %}
-        <div class="users">
-          <div class="card">
-            <div class="col">
-              <img
-                src="https://imgs.search.brave.com/J0Qf01tOs4e_SLcUAve9f_WOxYYDoTHflPALjXxgrMg/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uz/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC50/ZzZUWkpzamZVR0o3/dmlTc2JYQ0JRSGFI/YSZwaWQ9QXBp"
-              />
-              <h4>{{username}}</h4>
-            </div>
-
-            <div class="col">
-              Hostel : {{hostel}}
-              <br />
-            </div>
-
-            <div class="profile">
-              <a
-                href="{{url_for('auth.show_profile',username=username,hostel=hostel)}}"
-                id="tocen"
-              >
-                Profile
-              </a>
-            </div>
-          </div>
-        </div>
-        {% endblock %}
-{% block content %}
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Phudu:wght@600&display=swap"
-  rel="stylesheet"
-/>
-
+{% extends 'dashboard_hostellite.html' %}
+{% block head %}
+<head>
+{{super()}}
 <style>
-  body {
-    font-family: "Phudu", cursive;
-  }
   .ql {
+    margin-top: 60px;
     font-family: "Phudu", cursive;
     text-align: center;
     font-size: 70px;
@@ -69,6 +28,10 @@
     transition: border 0.1s linear;
     font-family: "Phudu", cursive;
   }
+  hr{
+    margin-top: 130px;
+    border: 2px solid blue;
+  }
 
   .links > a:hover {
     font-family: "Phudu", cursive;
@@ -76,13 +39,31 @@
     border: 5px teal solid;
   }
 </style>
-<div class="ql">Quick Links <br /><br /></div>
+</head>
+{% endblock %}
+{% block link %}
+    <a href="{{url_for('views.message_for_warden')}}">
+{% endblock %}
+{% block link1 %} {% endblock %} 
+{% block link2 %} {% endblock %}
+{% block user %} 
+{{super()}}
+{% endblock %}
+{% block profile %}
+<div class="profile">
+  <a
+href="{{url_for('auth.warden_profile',username=username,hostel=hostel)}}" 
+id="tocen" >
+Profile
+</a>
+</div>
+{% endblock %}
+{% block content %}
 <hr />
+<div class="ql">Quick Links <br /><br /></div>
 <div class="links">
   <a href="{{url_for('views.add_hostellite')}}" id="link1">Add Hostellite</a
   ><br />
   <a href="{{url_for('views.add_mess')}}" id="link2">ADD/UPDATE mess menu</a>
 </div>
-
-{% block link2 %} {% endblock %}
 {% endblock %}
