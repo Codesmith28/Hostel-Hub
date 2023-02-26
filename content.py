@@ -1,8 +1,8 @@
-from flask import send_from_directory
+from flask import Flask,send_from_directory
 from hostel import create_app
 import os
 
-app = create_app()
+app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
 
 @app.route('/uploads/<filename>')
