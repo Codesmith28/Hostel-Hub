@@ -5,28 +5,16 @@
 <head>
   {{super() }}
   <link rel="stylesheet" href="{{ url_for('static', filename='RoomandServices.css') }}">
-
-  
+  <style>
+    form{
+      width: 2000px;
+    }
+  </style>
 </head>
 {% endblock %}
 <body>
   {% block name %} {% endblock %}
-  {% block user %} {% endblock %}
-  {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        {% for category,message in messages %}
-        {% if category=='error' %}
-        <div class="alert alert-danger alert-dismissable fade show" role='alert'>
-            {{ message }}
-        </div>
-        {% else %}
-        <div class="alert alert-success alert-dismissable fade show" role='alert'>
-          {{ message }}
-      </div>
-        {% endif %}
-        {% endfor %}
-        {%  endif %}
-        {% endwith %}
+  {% block user %}{% endblock %}
       {% block content %}
      <form method="post" action="{{url_for('auth.send_message',username=username,hostel=hostel)}}"> 
     <div class="send_message">
@@ -34,9 +22,14 @@
     <p>Name: <input type="text" name="username" placeholder="Enter Name" required></p>
     <p>Subject :  <input type="text" name="Subject" placeholder="Enter Subject" required></p>
     <p><textarea name="Query" id="" cols="80" rows="20" placeholder="Enter your Query Here" required></textarea></p>
-    <p><input type="submit" value="Submit"></p>
+    <p><input type="submit" value="Submit" onclick="myFunc(event)"></p>
     </form>
     {% endblock %}
+    <script>
+      function myFunc(event) {
+        alert("Message sent");
+      }
+    </script>
 </div>
 </body>
 </html>

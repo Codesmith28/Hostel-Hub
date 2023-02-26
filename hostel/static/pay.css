@@ -31,14 +31,16 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 400px;
   max-width: 100%;
   font-family: Phudu, cursive;
+  padding-right: 500px;
+  padding-left: 200px;
 }
 
 form p {
   margin-bottom: 20px;
 }
-
 form input[type="text"],
 form input[type="email"],
 form input[type="number"],
@@ -51,6 +53,13 @@ form select {
   border-radius: 5px;
   box-sizing: border-box;
   margin-bottom: 20px;
+}
+
+form input[type="file"]{
+  cursor: pointer;
+  margin-left: 90px;
+  width: 400px;
+  font-size: 19px;
 }
 
 form input[type="submit"],
@@ -85,7 +94,7 @@ body {
 }
 /* make image smaller */
 img {
-  width: 100%;
-  height: 100%;
+  width: 500px;
+  height: 500px;
   object-fit: cover;
 }

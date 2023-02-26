@@ -142,7 +142,6 @@ def send_message(username,hostel):
             flash("Message sent",category='success')
             redirect(url_for('roomands',username=username,hostel=hostel))
         except:
-            flash("There was problem sending your message",category='error')
             return render_template('RoomandServices.html',username=username,hostel=hostel)
     else:
         return render_template('RoomandServices.html',username=username,hostel=hostel)
@@ -164,8 +163,7 @@ def search(username,hostel):
         if(details):
             return render_template('search.html', info=details, more_info=add_details,username=username,hostel=hostel)
         else:
-            flash("We couldn/'t find the name of given user in our database",category='error')
-            return render_template('search.html',info=None, more_info=None,username=username,hostel=hostel)
+            return render_template('search.html',info=None, more_info=None,username=username,hostel=hostel,notfound = True)
     else:
         return render_template('search.html', info=None,more_info = None,username=username,hostel=hostel)
 
