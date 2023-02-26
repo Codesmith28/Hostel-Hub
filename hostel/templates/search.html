@@ -202,7 +202,9 @@
         </div>
         </form>
         <table>
-          {% if notfound or info.username == "" %}
+          {% if nothing %}
+          <div class="nothing"><input type="text" hidden></div>
+          {% elif notfound or info.username == "" %}
           <div class="not_found"> No search results found of given user in our database </div>
           {% else %}
           <caption>
