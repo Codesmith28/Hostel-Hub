@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from os import path
+import os
 
 
 #default database for warden
@@ -31,7 +31,7 @@ FEE_DB = "fee.db"
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'hostel_manage'
-
+    app.config['UPLOAD_FOLDER'] = os.path.join(os.getcwd(), 'uploads')
     app.config['SQLALCHEMY_BINDS'] = {
         "warden_db": f'sqlite:///{DB_NAME}',
         "hostellite_db": f'sqlite:///{DB_NAME_H}',

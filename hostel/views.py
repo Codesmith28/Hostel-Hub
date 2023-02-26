@@ -43,11 +43,11 @@ def roomands(username,hostel):
     order = mess.query.order_by(mess.day).all()
     return render_template('RoomandServices.html',username=username,orders= order,hostel=hostel)
 
-from content import app
-import os
 
 @views.route('/rent/<username>/<hostel>', methods=['GET', 'POST'])
 def rent(username, hostel):
+    from content import app
+    import os
     if request.method == 'GET':
         order = mess.query.order_by(mess.day).all() 
         return render_template('hhpaymentform.html', username=username, orders=order, hostel=hostel)
