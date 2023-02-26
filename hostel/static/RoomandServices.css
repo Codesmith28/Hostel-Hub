@@ -63,6 +63,7 @@ input[type="text"] {
 
 p {
   font-size: 20px;
+  padding-bottom: 5px;
 }
 
 .alert {
@@ -162,8 +163,11 @@ h1 {
   font-size: 55px;
   color: rgb(27, 4, 92);
   font-weight: bold;
-  text-shadow: 2px 2px 2px #8caa88;
   text-decoration: underline;
+  /* prevent the unederline frmo breaking */
+  /* move underline a bit downwards */
+  text-decoration-skip-ink: none;
+  padding-bottom: 10px;
 }
 
 .send_message{

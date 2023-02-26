@@ -1,49 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Phudu:wght@600&display=swap"
+      rel="stylesheet"
+    />
+</head>
 <style>
   body {
-    background: aquamarine;
+    background: lightcyan;
     font-family: "Phudu", cursive;
   }
   .blocks {
     font-family: "Phudu", cursive;
-    border: 2px solid blue;
+    border: 3px solid blue;
     border-radius: 15px;
     margin-top: 20px;
     margin-bottom: 20px;
     font-size: 15px;
-    text-align: center;
   }
-  .blocks:hover{
-    margin-top: 25px;
-    border: 4px solid blue;
-    margin-bottom: 25px;
-  }
-  input[id="clear"]:hover {
-    background:blue;
-    border: 3px solid aqua;
-    margin-bottom: 5px;
-  }
+
   h1{
     text-align: center;
     font-size: 60px;
     font-family: "Phudu", cursive;
     margin-bottom: 50px;
   }
-  input[id="clear"]{
-    border: 3px solid blue;
-    background: aqua;
-    width: 80px;
-    margin-bottom: 10px;
-    font-size: 16px;
+
+  p{
+    font-size: 17px;
+    text-align: left;
     font-family: "Phudu", cursive;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+
+  /* make the clear button look better */
+  #clear {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-family: Phudu , cursive;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
     cursor: pointer;
     border-radius: 12px;
-    transition: 0.1s;
-    transform: translateX(-50%);
-    margin-left: 80px;
+    margin-left: 10px;
+    margin-bottom: 5px;
   }
+
+  /* add hover effect */
+  #clear:hover {
+    background-color: #45a049;
+  }
+
+
+
 </style>
 </head>
 <body>
@@ -55,7 +72,11 @@
   <p>From : {{content.username}}</p>
   <p>Subject : {{content.subject}}</p>
   <p>Query : {{content.info }}</p>
-  <input type="submit" value = "clear" id="clear">
+
+  <button tyep="submit" value="clear" id="clear" name="clear">clear</button>
+  
+
+
 </form>
 </div>
 {% endfor %} 

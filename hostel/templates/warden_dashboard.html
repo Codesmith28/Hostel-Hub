@@ -4,7 +4,7 @@
 {{super()}}
 <style>
   .ql {
-    margin-top: 60px;
+    margin-top: 40px;
     font-family: "Phudu", cursive;
     text-align: center;
     font-size: 70px;
@@ -29,7 +29,7 @@
     font-family: "Phudu", cursive;
   }
   hr{
-    margin-top: 130px;
+    margin-top: 50px;
     border: 2px solid blue;
   }
 
@@ -75,10 +75,10 @@ Profile
 {% endblock %}
 {% block content %}
 <hr />
-<div class="ql">Quick Links <br /><br /></div>
+<div class="ql">Quick Links <br /></div>
 <div class="links">
   <a href="{{url_for('views.add_hostellite')}}" id="link1">Add Hostellite</a
-  ><br />
+  >
   <a href="{{url_for('views.add_mess')}}" id="link2">ADD/UPDATE mess menu</a>
 </div>
 {% endblock %}
