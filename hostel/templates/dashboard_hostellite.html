@@ -61,7 +61,7 @@
         border: 3px solid teal;
       }
 
-      div.profile{
+      div.profile {
         text-align: center;
         align-items: center;
         display: flex;
@@ -92,21 +92,17 @@
   </head>
   {% endblock %}
   <body>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    {% for category,message in messages %}
-    {% if category=='error' %}
-    <div class="alert alert-danger alert-dismissable fade show" role='alert'>
-        {{ message }}
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category,message in messages %} {% if category=='error'
+    %}
+    <div class="alert alert-danger alert-dismissable fade show" role="alert">
+      {{ message }}
     </div>
     {% else %}
-    <div class="alert alert-success alert-dismissable fade show" role='alert'>
+    <div class="alert alert-success alert-dismissable fade show" role="alert">
       {{ message }}
-  </div>
-    {% endif %}
-    {% endfor %}
-    {%  endif %}
-    {% endwith %}
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
     <div class="container">
       <nav>
         <ul>
@@ -119,36 +115,45 @@
             </a>
           </li>
           {% block dash %}
+
           <li>
-            <a href="{{url_for('views.hostellite_dashboard',username=username,hostel=hostel)}}">
+            <a
+              href="{{url_for('views.hostellite_dashboard',username=username,hostel=hostel)}}"
+            >
               <i class="fas fa-menorah"></i>
               <span class="nav-item"><b>Dashboard</b></span>
             </a>
           </li>
+
           {% endblock %}
+
           <li>
             {% block link %}
-            <a href="{{url_for('views.roomands',username=username,hostel=hostel)}}">
+            <a
+              href="{{url_for('views.roomands',username=username,hostel=hostel)}}"
+            >
               {% endblock %}
               <i class="fas fa-comment"></i>
               <span class="nav-item"><b>Queries</b></span>
             </a>
           </li>
+
+          {% block link1 %}
+          <a href="{{url_for('views.rent',username=username,hostel=hostel)}}">
+            <i class="fas fa-database"></i>
+            <span class="nav-item"><b>Rent</b></span>
+          </a>
+
+          {% endblock %} {% block link2 %}
           <li>
-            {% block link1 %}
-            <a href="{{url_for('views.rent',username=username,hostel=hostel)}}">
-              <i class="fas fa-database"></i>
-              <span class="nav-item"><b>Rent</b></span>
-            </a>
-          </li>
-          {% endblock %}
-          {% block link2 %}
-          <li>
-            <a href="{{url_for('views.search',username=username,hostel=hostel)}}">
+            <a
+              href="{{url_for('views.search',username=username,hostel=hostel)}}"
+            >
               <i class="fas fa-search"></i>
               <span class="nav-item"><b>Find fellow hostellites</b></span>
             </a>
           </li>
+
           {% endblock %}
           <li>
             <a href="{{url_for('views.home')}}" class="logout">
@@ -161,7 +166,9 @@
       {% block user %}
       <section class="main">
         <div class="main-top">
-        {% block name %}  <h1 align="center">Dashboard</h1> {% endblock %}
+          {% block name %}
+          <h1 align="center">Dashboard</h1>
+          {% endblock %}
         </div>
         <div class="users">
           <div class="card">
@@ -178,17 +185,16 @@
             </div>
             {% block profile %}
             <div class="profile">
-                   <a
-                href="{{url_for('auth.show_profile',username=username,hostel=hostel)}}" 
-                id="tocen" >
+              <a
+                href="{{url_for('auth.show_profile',username=username,hostel=hostel)}}"
+                id="tocen"
+              >
                 Profile
               </a>
             </div>
           </div>
         </div>
-        {% endblock %}
-        {% endblock %}
-        {% block content %}
+        {% endblock %} {% endblock %} {% block content %}
         <section class="attendance">
           <div class="attendance-list">
             <h1>Menu</h1>
