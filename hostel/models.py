@@ -4,6 +4,7 @@ from . import mess_db
 from . import message_db
 from . import info_db
 from . import infow_db
+from .import fee_db
 from flask_login import UserMixin
 from sqlalchemy.sql import func
 from datetime import datetime
@@ -47,3 +48,11 @@ class infow(infow_db.Model,UserMixin):
     name = infow_db.Column(infow_db.String(50))
     phone = info_db.Column(infow_db.String(15))
     add = infow_db.Column(info_db.String(120))
+
+class fee(fee_db.Model,UserMixin):
+    id = fee_db.Column(fee_db.Integer,primary_key = True)
+    name = fee_db.Column(fee_db.String(60))
+    room = fee_db.Column(fee_db.String(60))
+    phone = fee_db.Column(fee_db.String(60))
+    hostel = fee_db.Column(fee_db.String(60))
+    file = fee_db.Column(fee_db.String(1000))

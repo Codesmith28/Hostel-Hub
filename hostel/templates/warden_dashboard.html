@@ -53,7 +53,14 @@
     <a href="{{url_for('views.message_for_warden')}}">
 {% endblock %}
 {% block link1 %} {% endblock %} 
-{% block link2 %} {% endblock %}
+{% block link2 %} 
+<li>
+  <a href="{{url_for('auth.fee_status',hostel=hostel)}}">
+    <i class="fas fa-search"></i>
+    <span class="nav-item"><b>Check Fee status</b></span>
+  </a>
+</li>
+{% endblock %}
 {% block user %} 
 {{super()}}
 {% endblock %}

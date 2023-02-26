@@ -1,5 +1,5 @@
-from flask import Blueprint,render_template,request,flash,redirect,url_for
-from .models import User,hostellite,mess,message,info,infow
+from flask import Blueprint,render_template,request,flash,redirect,url_for,send_from_directory
+from .models import User,hostellite,mess,message,info,infow,fee
 from werkzeug.security import generate_password_hash,check_password_hash
 from . import db
 from flask_login import login_user , login_required , logout_user , current_user
@@ -8,6 +8,7 @@ from . import mess_db
 from . import message_db
 from . import info_db
 from . import infow_db
+from . import fee_db
 
 auth = Blueprint('auth',__name__)
 
@@ -211,3 +212,11 @@ def warden_profile(username, hostel):
         except:
             flash("Couldn't access database", category='error')
             return render_template('warden_profile.html.html', username=username, hostel=hostel)
+
+
+@auth.route('/fee_status/<hostel>')
+def fee_status(hostel):
+    has_paid = fee.query.filter_by(hostel=hostel).all()
+    not_paid = hostellite.query.filter_by(hostel=hostel).all()
+    return render_template('fee_status.html',hostel=hostel, fee_info = has_paid , np = not_paid)
+

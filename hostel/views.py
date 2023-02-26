@@ -2,9 +2,10 @@
 from flask import Blueprint,render_template,request,redirect,url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_required,current_user
-from .models import User,hostellite,message
+from .models import User,hostellite,message,fee
 from . import mess_db
 from . import message_db
+from . import fee_db
 from .models import mess
 views = Blueprint('views',__name__)
 
@@ -42,10 +43,30 @@ def roomands(username,hostel):
     order = mess.query.order_by(mess.day).all()
     return render_template('RoomandServices.html',username=username,orders= order,hostel=hostel)
 
-@views.route('/rent/<username>/<hostel>')
-def rent(username,hostel):
-    order = mess.query.order_by(mess.day).all() 
-    return render_template('hhpaymentform.html',username=username,orders= order,hostel=hostel)
+from content import app
+import os
+
+@views.route('/rent/<username>/<hostel>', methods=['GET', 'POST'])
+def rent(username, hostel):
+    if request.method == 'GET':
+        order = mess.query.order_by(mess.day).all() 
+        return render_template('hhpaymentform.html', username=username, orders=order, hostel=hostel)
+    elif request.method == 'POST':
+        order = mess.query.order_by(mess.day).all() 
+        name = request.form.get('name')
+        hoste = request.form.get('hostel')
+        phone = request.form.get('phone')
+        file = request.files['file'] 
+        room = request.form.get('room')
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+        details = fee(name=name, hostel=hoste, phone=phone, file=file.filename, room=room) 
+        try:
+            fee_db.session.add(details)
+            fee_db.session.commit()
+            return render_template('hhpaymentform.html', username=username, orders=order, hostel=hostel)
+        except:
+            return render_template('hhpayment.html', username=username, orders=order, hostel=hostel)
+
 
 @views.route('/messageforwardem', methods=['GET','POST'])
 def message_for_warden():
@@ -67,7 +88,7 @@ def search(username,hostel):
     order = mess.query.order_by(mess.day).all() 
     return render_template('search.html',info=None,more_info = None,username=username,orders= order,hostel=hostel)
 
-@views.route('/hostellite_dashboard/<username>/<hostel>')
+@views.route('/hostellite_dashboard/<username>/<hostel>',methods=['GET'])
 def hostellite_dashboard(username,hostel):
     order = mess.query.order_by(mess.day).all() 
     return render_template('dashboard_hostellite.html',username=username,orders= order,hostel=hostel)

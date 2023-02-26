@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fee status</title>
+    <style>
+        body {
+    background: aquamarine;
+    font-family: "Phudu", cursive;
+  }
+  hr{
+    background-color:blue;
+    margin-top: 15px;
+  }
+        .paid,.not_paid{
+            border: 5px solid blue;
+            border-radius: 10px;
+            margin-top: 40px;
+            font-size: 25px;
+            margin-bottom: 40px;
+            text-align: center;
+            max-width: 50%;
+            text-align: center;
+            margin-left: 450px;
+        }
+       
+       h1{
+        margin-top: 15px;
+        text-align: center;
+       }
+       img{
+        width: 900px;
+       }
+    </style>
+</head>
+<body>
+    <h1>FEES PAID:</h1>
+    {% for paid in fee_info %}
+    <div class="paid">
+        From : {{paid.name}} <br>
+        Hostel : {{paid.hostel}} <br>
+        Rooom :  {{paid.room}} <br>
+        Phone number : {{paid.phone}} <br>
+        Screenshot added: <br>
+        {% if paid.file %}
+            <img src="{{ url_for('uploaded_file', filename=paid.file) }}" alt="Uploaded Image">
+        {% else %}
+            No screenshot uploaded.
+        {% endif %}
+    </div>
+    {% endfor %}
+    <hr>
+    <h1>NOT PAID</h1>
+    <div class="not_paid">
+        {% if np.username not in fee_info.name %}
+        {% for not_paid  in np %}
+        Name : {{not_paid.username }} <br>
+        Room : {{ not_paid.room }} <br>
+        Floor: {{ not_paid.floor }} <br>
+        {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>

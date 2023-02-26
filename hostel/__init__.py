@@ -25,6 +25,9 @@ INFO_DB = "info.db"
 infow_db = SQLAlchemy()
 INFOW_DB = "infow.db"
 
+fee_db = SQLAlchemy()
+FEE_DB = "fee.db"
+
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'hostel_manage'
@@ -35,7 +38,8 @@ def create_app():
         "mess_db": f'sqlite:///{DB_NAME_M}',
         "message_db": f'sqlite:///{MESSAGE_DB}',
         "info_db": f'sqlite:///{INFO_DB}',
-        "infow_db" : f'sqlite:///{INFOW_DB}'
+        "infow_db" : f'sqlite:///{INFOW_DB}',
+        "fee_db"   : f'sqlite:///{FEE_DB}'
     }
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
@@ -55,6 +59,9 @@ def create_app():
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///infow.db'
     infow_db.init_app(app)
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///fee.db'
+    fee_db.init_app(app)
     
     from .views import views
     from .auth import auth
@@ -62,7 +69,7 @@ def create_app():
     app.register_blueprint(views,url_prefix='/')
     app.register_blueprint(auth,url_prefix='/')
 
-    from .models import User,hostellite,message,mess,info,infow
+    from .models import User,hostellite,message,mess,info,infow,fee
     with app.app_context():
         db.create_all()
         hostellite_db.create_all()
@@ -70,4 +77,5 @@ def create_app():
         message_db.create_all()
         info_db.create_all()
         infow_db.create_all()
+        fee_db.create_all()
     return app

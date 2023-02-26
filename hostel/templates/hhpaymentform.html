@@ -12,16 +12,15 @@
 {% block user %} {% endblock %}
 {% block content %}
   <div class="c">
-    <form>
+    <form action="{{url_for('views.rent',username=username,hostel=hostel)}}" method="post" enctype="multipart/form-data">
       <h1 class="d">PAYMENT</h1>
       <p>Name: <input type="text" name="name" required /></p>
 
       <!-- section to add room number -->
       <p>Room number: <input type="text" name="room" required /></p>
-
       <p>Phone number: <input type="text" name="phone" required /></p>
 
-      <p>Email: <input type="email" name="email" id="" required /></p>
+      <p>Hostel Name: <input type="text" name="hostel" id="email" required /></p>
       <h2 class="e">PAYMENT INFORMATION</h2>
 
       <!-- add a qr code image below-->
@@ -31,7 +30,7 @@
       <div class="add_file">
         <p>
           <u> Attach the screenshot of your payment :</u>
-          <input type="file" id="add_file" required />
+       <input type="file" name="file" id="add_file" required />
         </p>
       </div>
       <p>
